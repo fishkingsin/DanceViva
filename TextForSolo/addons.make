@@ -7,3 +7,6 @@ ofxDraggable
 ofxMSAInteractiveObject
 ofxRenderManager
 ofxSyphon
+ofxKinect
+ofxOpenCv
+ofxTSPSReceiver
