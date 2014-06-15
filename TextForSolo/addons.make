@@ -1,0 +1,9 @@
+ofxGui
+ofxNetwork
+ofxOsc
+ofxXmlSettings
+ofxAnimatable
+ofxDraggable
+ofxMSAInteractiveObject
+ofxRenderManager
+ofxSyphon
