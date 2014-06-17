@@ -20,3 +20,4 @@
 *.out
 *.app
 ./videoStreamer/src/addons
+videoStreamer/src/addons/ofxTurboJpeg/
