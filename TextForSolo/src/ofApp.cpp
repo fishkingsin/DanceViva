@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    ofSetLogLevel(OF_LOG_VERBOSE);
     //this connects our app to any running openTSPS copy that is sending OSC messages to port 12000 with our IP
 	receiver = new ofxTSPSReceiver();
 	receiver->setListener( this );
@@ -9,6 +10,11 @@ void ofApp::setup(){
     
     individualTextureSyphonServer.setName("Texture Output");
     tex.allocate(200, 100, GL_RGBA);
+    
+    ofBuffer buf = ofBufferFromFile("text/HOW TO BE ALONE by Tanya Davis.txt");
+//    ofLogVerbose() << buf;
+    string text = buf.getText();
+    
 }
 
 //--------------------------------------------------------------
