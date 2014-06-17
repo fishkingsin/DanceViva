@@ -60,7 +60,7 @@ public:
     //filter 
     ofxGlow     glow;
     float radius;
-    vector <wstring >ss;
+    vector <string >targetString;
     int selectedText;
     
     //syphon

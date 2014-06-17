@@ -15,7 +15,7 @@
 void testApp::Mode2Setup()
 {
     sense2_mode = 0;
-    selectedText = ss.size()-1;
+    selectedText = targetString.size()-1;
     if(xml.loadFile("text.xml"))
     {
         if(xml.pushTag("XML"))
@@ -25,67 +25,86 @@ void testApp::Mode2Setup()
         for(int i = 0 ; i < numTag ; i++)
         {
             string text = xml.getAttribute("TEXT","text","NaN",i);
-            wstring wstr;
-            utf8ToWStr(text.c_str(),wstr);
-            ss.push_back(wstr);
-
+//            wstring wstr;
+//            utf8ToWStr(text.c_str(),wstr);
+            targetString.push_back(text);
+//            ofLogVerbose() << "wstr = "<< text;
         }
             
         }
-        ofLog(OF_LOG_VERBOSE,"ss.size = %i",ss.size());
+//        ofLog(OF_LOG_VERBOSE,"ss.size = %i",ss.size());
+        
     }
     else
     {
-        ss.push_back(wstring(L"愛上一個從來沒有愛過自己人"));
-        ss.push_back(wstring(L"痛苦"));
-        ss.push_back(wstring(L"相冊"));//2.40
-        ss.push_back(wstring(L"美好回憶"));
-        ss.push_back(wstring(L"失去你"));
-        ss.push_back(wstring(L"對不起"));
-        ss.push_back(wstring(L"對不起"));
-        ss.push_back(wstring(L"我自己"));
-        ss.push_back(wstring(L"空虛的房間圍繞"));
-        ss.push_back(wstring(L"回憶"));
-        ss.push_back(wstring(L"她身影"));
+//        targetString.push_back(wstring(L"愛上一個從來沒有愛過自己人"));
+//        targetString.push_back(wstring(L"痛苦"));
+//        targetString.push_back(wstring(L"相冊"));//2.40
+//        targetString.push_back(wstring(L"美好回憶"));
+//        targetString.push_back(wstring(L"失去你"));
+//        targetString.push_back(wstring(L"對不起"));
+//        targetString.push_back(wstring(L"對不起"));
+//        targetString.push_back(wstring(L"我自己"));
+//        targetString.push_back(wstring(L"空虛的房間圍繞"));
+//        targetString.push_back(wstring(L"回憶"));
+//        targetString.push_back(wstring(L"她身影"));
     }
     
     
-    wstring str;// (L"人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚愛上一個從來沒有愛過自己人其實是痛苦我要搬家了收拾東西時找到一本相冊才發現照片裡都裝著滿滿美好回憶一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實失去你我最對不起是我自己回到只屬於自己新家後只有空虛的房間圍繞著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有她身影人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚其實是我要搬家了收拾東西時找到一本才發現照片裡都裝著滿滿一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實我最是回到只屬於自己新家後只有著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚其實是我要搬家了收拾東西時找到一本才發現照片裡都裝著滿滿一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實我最是回到只屬於自己新家後只有著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚其實是我要搬家了收拾東西時找到一本才發現照片裡都裝著滿滿一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實我最是回到只屬於自己新家後只有著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚其實是我要搬家了收拾東西時找到一本才發現照片裡都裝著滿滿一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實我最是回到只屬於自己新家後只有著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有");
-    ofFile file("text/t1.txt");
+    string str;// (L"人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚愛上一個從來沒有愛過自己人其實是痛苦我要搬家了收拾東西時找到一本相冊才發現照片裡都裝著滿滿美好回憶一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實失去你我最對不起是我自己回到只屬於自己新家後只有空虛的房間圍繞著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有她身影人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚其實是我要搬家了收拾東西時找到一本才發現照片裡都裝著滿滿一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實我最是回到只屬於自己新家後只有著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚其實是我要搬家了收拾東西時找到一本才發現照片裡都裝著滿滿一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實我最是回到只屬於自己新家後只有著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚其實是我要搬家了收拾東西時找到一本才發現照片裡都裝著滿滿一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實我最是回到只屬於自己新家後只有著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚其實是我要搬家了收拾東西時找到一本才發現照片裡都裝著滿滿一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實我最是回到只屬於自己新家後只有著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有");
+    ofFile file("text/t2.txt");
+    vector <string> words;
     if(file.is_open())
     {
+        std::string delimiter = " ";
         ofBuffer buffer = file.readToBuffer();
-        char* line = buffer.getBinaryBuffer();
-        
+        string line = buffer.getText();
+
+        words = ofSplitString(line, delimiter);
         //want to erase first char
         //if txt is encode in BOM
-        if(line[0]==0xEF && line[1]==0xBB && line[2]== 0xBF)
-        {
-            memmove (line,line+3,strlen(line)-3);
-            
-        }
+//        if(line[0]==0xEF && line[1]==0xBB && line[2]== 0xBF)
+//        {
+//            memmove (line,line+3,strlen(line)-3);
+//            
+//        }
+//        
+//        utf8ToWStr(line,str);
         
-        utf8ToWStr(line,str);
     }
     
     int counter = 0;
     int fSize = 32;
-    font.loadFont("LiHeiPro.ttf",fSize,true,true);
-    
-    for (int j = -fSize; j < ofGetHeight()+fSize; j +=(fSize+5))
+    font.loadFont("Times New Roman.ttf",fSize,true,true);
+    float lastX = 0;
+    float lastY = fSize;
+    for(int i = 0 ; i < words.size() ; i++)
     {
-        for (int i = -fSize; i < ofGetWidth()+fSize; i +=(fSize+5))
+        string _word = words[counter%words.size()];
+        int x = lastX;
+        lastX = x+font.stringWidth(_word);
+        if(lastX>ofGetWidth())
+        {
+            lastX = 0;
+            lastY += fSize;
+        }
+        
+        int y = lastY;
+        lastY = y;
+//        for (int i = -fSize; i < ofGetWidth()+fSize; i +=(fSize+5))
         {
             MText *newText = new MText();
             
-            newText->old.x = i;//+ofRandomf()*fSize-(fSize/2);
-            newText->old.y = j;//+ofRandomf()*fSize-(fSize/2);
+            newText->old.x = x;//+ofRandomf()*fSize-(fSize/2);
+            newText->old.y = y;//+ofRandomf()*fSize-(fSize/2);
             newText->x = newText->old.x;//i+ofRandomf()*fSize-(fSize/2);
             newText->y = newText->old.y;//j+ofRandomf()*fSize-(fSize/2);
+            newText->z = ofRandom(-200,00);
             
             newText->setup(&font,counter,1);
             counter++;
-            newText->m_string = str[counter%str.length()];//(L"1");
+            newText->m_string = _word;//(L"1");
+
             int _index = counter;//Math.random()*ttext.length;
             //            newText->alpha = 1;
             //            newText->deltaY = i;
@@ -157,7 +176,7 @@ void testApp::Mode2Update()
                     if(ABS(_d->deltaR-ofDist(ptr->x,ptr->y,_d->deltaX,_d->deltaY))<20)
                     {
                         
-                        wstring target = ss[selectedText];
+                        string target = targetString[selectedText];
                         //for(int i = 0 ; i < 5 ; i++)
                         for(int i = 0 ; i < target.length() ; i++)
                         {

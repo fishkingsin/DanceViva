@@ -207,7 +207,7 @@ void testApp::keyPressed(int key){
             {
                 
                 MText * ptr = *it1;
-                wstring target = ss[selectedText];
+                string target = targetString[selectedText];
                 for(int i = 0 ; i < target.length() ; i++)
                 {
                     if(ptr->lightUp(target[i]))                            
@@ -258,12 +258,12 @@ void testApp::keyPressed(int key){
 void testApp::nextText()
 {
     selectedText++;
-    selectedText%=ss.size();
+    selectedText%=targetString.size();
 }
 void testApp::prevText()
 {
     selectedText--;
-    (selectedText<0)?selectedText=ss.size()-1:selectedText;
+    (selectedText<0)?selectedText=targetString.size()-1:selectedText;
 }
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){

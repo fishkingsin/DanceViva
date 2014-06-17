@@ -65,14 +65,14 @@ public:
         }
         return false;
     }
-    bool checkHit(wchar_t _i)
+    bool checkHit(string target)
     {
         color.r = 255;
         color.g = 255;
         color.b = 255;
         
         tweenIn.setParameters(1,easingcubic,ofxTween::easeOut,0,1,100,0);
-        if(m_string[0]!=_i)
+        if(m_string.find(target)!=string::npos)
         {
             tweenOut.setParameters(2,easingcubic,ofxTween::easeOut,1,0,500,100);
             return false;
@@ -83,23 +83,23 @@ public:
             return true;
         }
     }
-    bool checkHit(int _i)
-    {
-        color.r = 255;
-        color.g = 255;
-        color.b = 255;
-        tweenIn.setParameters(1,easingcubic,ofxTween::easeOut,0,1,100,0);
-        if(index!=_i)
-        {
-            tweenOut.setParameters(2,easingcubic,ofxTween::easeOut,1,0,500,100);
-            return false;
-        }
-        else
-        {
-            tweenOut.setParameters(3,easingcubic,ofxTween::easeOut,1,0,10000,100);
-            return true;
-        }
-    }
+//    bool checkHit(int _i)
+//    {
+//        color.r = 255;
+//        color.g = 255;
+//        color.b = 255;
+//        tweenIn.setParameters(1,easingcubic,ofxTween::easeOut,0,1,100,0);
+//        if(index!=_i)
+//        {
+//            tweenOut.setParameters(2,easingcubic,ofxTween::easeOut,1,0,500,100);
+//            return false;
+//        }
+//        else
+//        {
+//            tweenOut.setParameters(3,easingcubic,ofxTween::easeOut,1,0,10000,100);
+//            return true;
+//        }
+//    }
     bool checkHit()
     {
         color.r = 255;
@@ -128,12 +128,18 @@ public:
             //        ofFill();
             ofPushMatrix();
             
-            ofTranslate(_x,_y);
+            ofTranslate(_x,_y,this->z);
             if(bScale)ofScale(scale, scale);
             if(bRotate)ofRotate(rotation, 0, 0, 1);
             (bScale)?ofTranslate(-(font->getSize()*scale)/2,(font->getSize()*scale)/2):ofTranslate(-(font->getSize())/2,(font->getSize())/2);
             ofPushStyle();
-            ofSetColor(color);
+//#define IS_DEBUG
+#ifdef IS_DEBUG
+                        ofSetColor(255,255,255);
+#else
+                        ofSetColor(color);
+#endif
+
             
             font->drawString(m_string,0,0);
             ofPopStyle();
@@ -162,7 +168,7 @@ public:
     
     
     int index;
-    wstring m_string;
+    string m_string;
     ofxTween tweenIn;
     ofxTween tweenOut;
     ofxTween tween2;
