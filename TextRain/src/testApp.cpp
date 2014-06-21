@@ -3,7 +3,7 @@
 bool bDebug = false;
 //--------------------------------------------------------------
 void testApp::setup(){
-    
+    ofSetFrameRate(25);
     ofSetLogLevel(OF_LOG_VERBOSE);
     image.loadImage("DrawTest.png");
     ofSetVerticalSync(true);
@@ -90,13 +90,19 @@ void testApp::setup(){
 
     //
     Mode2Setup();
+    
+    
+    ofFile file("text/t2.txt");
+    ofBuffer buffer = file.readToBuffer();
+    charIndex = 0;
+    text = buffer.getText();
     //mB2d.setup();
-    buoyancy.setup();
-    buoyancy.drawable = mText[ofRandom(mText.size()-1)];
+//    buoyancy.setup();
+//    buoyancy.drawable = mText[ofRandom(mText.size()-1)];
     
 
     //mainOutputSyphonServer.setName("Simple Server");
-
+    syphon.setName("TextRain");
 }
 //this captures all our control panel events - unless its setup differently in testApp::setup
 //--------------------------------------------------------------
@@ -147,8 +153,31 @@ void testApp::update(){
     updateGUI();
     if(sense2_mode==0)
     {
-        buoyancy.interval = gui.getValueI("BUOYANCY_INTERVAL");
-        buoyancy.update(mText,mouseX);
+//        buoyancy.interval = gui.getValueI("BUOYANCY_INTERVAL");
+//        buoyancy.update(mText,mouseX);
+        vector<Particle*>::iterator it;
+        float noisePower = 0.4;
+        float noiseStrength = 0.6;
+        float t = (ofGetElapsedTimef()) * noisePower;
+        float div = 250.0;
+        float cur = ofGetElapsedTimef();
+        for(it = particles.begin() ; it!=particles.end() ; ++it)
+        {
+            Particle * p = *it;
+//            p->update();
+
+            ofVec3f rot(
+                        ofSignedNoise(t,p->pos.y/div, p->pos.z/div)*noiseStrength,
+                        ofSignedNoise(p->pos.x/div, t, p->pos.z/div)*noiseStrength,
+                        0);//ofSignedNoise(billboards.getVertex(i).x/div, billboards.getVertex(i).y/div, t)*noiseStrength);
+            
+            rot *=   ofGetLastFrameTime();
+            p->vel += rot;
+            p->oldpos = p->pos;
+            p->pos += p->vel;
+            p->vel*=p->damp;
+            if(p->age<80)p->age++;
+        }
     }
     else if(sense2_mode==1)
     {
@@ -160,22 +189,32 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     // Clear with alpha, so we can capture via syphon and composite elsewhere should we want.
-    glClearColor(0.5,0.5,0.5, 0.0);
+    glClearColor(0,0,0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    ofEnableAlphaBlending();
+
     if(sense2_mode==0)
     {
-        ofSetColor(255);
-        image.draw(0,0,ofGetWidth(),ofGetHeight());
-        buoyancy.draw(mText);
+       
+        vector<Particle*>::iterator it;
+        for(it = particles.begin() ; it!=particles.end() ; ++it)
+        {
+            Particle * p = *it;
+            p->draw();
+        }
+        
+//        buoyancy.draw(mText);
     }
     else if(sense2_mode==1)
     {
 
         Mode2Draw();
     }
+    ofDisableAlphaBlending();
     //if(ss.size()>selectedText)font.drawString(ss[selectedText], 20, ofGetHeight()-64);
     //mainOutputSyphonServer.publishScreen();
     //    gui.draw();
+    syphon.publishScreen();
 }
 
 //--------------------------------------------------------------
@@ -187,6 +226,12 @@ void testApp::keyPressed(int key){
             sense2_mode = 0;
             break;
         case '2':
+            while(!particles.empty())
+            {
+                Particle* p = particles.back();
+                p->~Particle();
+                particles.pop_back();
+            }
             sense2_mode = 1;
             break;
         case ']':
@@ -244,11 +289,11 @@ void testApp::keyPressed(int key){
             }
             break;
             case 'r':
-            buoyancy.toggleRain();
+//            buoyancy.toggleRain();
             
             break;
             case 'R':
-            buoyancy.toggleRainTex();
+//            buoyancy.toggleRainTex();
             break;
             case 'f':
             ofToggleFullscreen();
@@ -277,18 +322,23 @@ void testApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
-    
+    addParticle(x,y);
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
     if(sense2_mode==0)
     {
-        buoyancy.addRain(x, y, mText[ofRandom(mText.size()-1)]);
+
+        addParticle(x,y);
+
+        
+//        buoyancy.addRain(x, y, mText[ofRandom(mText.size()-1)]);
     }
     else if(sense2_mode==1)
     {
         nextText();
+        ofLogVerbose("targetString:") << targetString[selectedText];
         MData *_data = new MData();
         _data->deltaX = x;
         _data->deltaY = y;
@@ -387,5 +437,20 @@ void testApp::setupInput(int index)
 {
     if (index<0 || index>inputList.getNumEntries())
         return ;
+}
+
+void testApp::addParticle(float x , int y)
+{
+    if(charIndex < text.length())
+    {
+        Particle* particle = new Particle();
+        string t = "";
+        t += text[charIndex];
+        particle->pos.set(x,y,0);
+        particle->setup(&font, t);
+        
+        particles.push_back(particle);
+        charIndex++;
+    }
 }
 

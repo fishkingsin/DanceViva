@@ -9,9 +9,11 @@
 #include "ofxAutoControlPanel.h"
 //#include "MyB2D.h"
 #include "UTFHandler.h"
-#include "Buoyancy.h"
+//#include "Buoyancy.h"
 #include "MText.h"
 #include "ofxXmlSettings.h"
+#include "Particle.h"
+#include "ofxSyphon.h"
 class MData
 {
 public:
@@ -83,8 +85,13 @@ public:
     
     
     //buoyancy
-    Buoyancy buoyancy;
+//    Buoyancy buoyancy;
+    vector<Particle*> particles;
+    void addParticle(float x , int y);
+    string text;
+    int charIndex;
     ofImage image;
     //vector<ofImage> rainTexes;
     ofxXmlSettings xml;
+    ofxSyphonServer syphon;
 };

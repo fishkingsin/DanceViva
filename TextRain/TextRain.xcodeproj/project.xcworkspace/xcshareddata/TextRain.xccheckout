@@ -12,6 +12,8 @@
 	<dict>
 		<key>13619FAA-75DD-459D-B03F-2FB12ADBE42D</key>
 		<string>https://github.com/arturoc/ofxTween.git</string>
+		<key>27840B25-543E-4875-9598-9C7C0FFABF54</key>
+		<string>https://github.com/astellato/ofxSyphon.git</string>
 		<key>3E6785B0-C32E-4156-8DE4-77B0F8A9A9D1</key>
 		<string>https://github.com/hironishihara/ofxTrueTypeFontUC.git</string>
 		<key>64C519B7-DC28-4B18-9B8A-54F4CF678865</key>
@@ -27,6 +29,8 @@
 	<dict>
 		<key>13619FAA-75DD-459D-B03F-2FB12ADBE42D</key>
 		<string>../../../../../addons/ofxTween</string>
+		<key>27840B25-543E-4875-9598-9C7C0FFABF54</key>
+		<string>../../../../../addons/ofxSyphon</string>
 		<key>3E6785B0-C32E-4156-8DE4-77B0F8A9A9D1</key>
 		<string>../../../../../addons/ofxTrueTypeFontUC</string>
 		<key>64C519B7-DC28-4B18-9B8A-54F4CF678865</key>
@@ -67,6 +71,14 @@
 			<string>64C519B7-DC28-4B18-9B8A-54F4CF678865</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxFX</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>27840B25-543E-4875-9598-9C7C0FFABF54</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxSyphon</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

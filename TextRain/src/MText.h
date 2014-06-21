@@ -71,8 +71,26 @@ public:
         color.g = 255;
         color.b = 255;
         
+        tweenIn.setParameters(1,easingcubic,ofxTween::easeOut,0,1,200,0);
+        if(m_string.find(target)==string::npos)
+        {
+           
+            tweenOut.setParameters(2,easingcubic,ofxTween::easeOut,1,0,500,100);
+            return false;
+        }
+        else
+        {
+            tweenOut.setParameters(3,easingcubic,ofxTween::easeOut,1,0,10000,100);
+            return true;
+        }
+    }
+    bool checkHit(int _i)
+    {
+        color.r = 255;
+        color.g = 255;
+        color.b = 255;
         tweenIn.setParameters(1,easingcubic,ofxTween::easeOut,0,1,100,0);
-        if(m_string.find(target)!=string::npos)
+        if(index!=_i)
         {
             tweenOut.setParameters(2,easingcubic,ofxTween::easeOut,1,0,500,100);
             return false;
@@ -83,23 +101,6 @@ public:
             return true;
         }
     }
-//    bool checkHit(int _i)
-//    {
-//        color.r = 255;
-//        color.g = 255;
-//        color.b = 255;
-//        tweenIn.setParameters(1,easingcubic,ofxTween::easeOut,0,1,100,0);
-//        if(index!=_i)
-//        {
-//            tweenOut.setParameters(2,easingcubic,ofxTween::easeOut,1,0,500,100);
-//            return false;
-//        }
-//        else
-//        {
-//            tweenOut.setParameters(3,easingcubic,ofxTween::easeOut,1,0,10000,100);
-//            return true;
-//        }
-//    }
     bool checkHit()
     {
         color.r = 255;

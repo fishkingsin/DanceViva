@@ -131,7 +131,7 @@ void testApp::Mode2Draw()
     switch(sense2_mode)
     {
         case 0:
-            ofClear(255,255,255, 255);
+//            ofClear(255,255,255, 255);
             drawText();
             
             break;
@@ -164,6 +164,7 @@ void testApp::Mode2Update()
 //        hitNum[2] = 1002;
 //        hitNum[3] = 1003;
 //        hitNum[4] = 1004;
+        
         for(it2=mData.begin(); it2!=mData.end();++it2)
         {
             MData *_d = *it2;
@@ -177,15 +178,7 @@ void testApp::Mode2Update()
                     {
                         
                         string target = targetString[selectedText];
-                        //for(int i = 0 ; i < 5 ; i++)
-                        for(int i = 0 ; i < target.length() ; i++)
-                        {
-                            if(ptr->checkHit(target[i]))                            
-//                            if(ptr->checkHit(hitNum[i]))
-                            {
-                                break;
-                            }
-                        }
+                        ptr->checkHit(target);
                     }
                     
                 }
