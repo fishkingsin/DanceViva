@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3883780D-933D-4340-B79A-B89A58CE5186</string>
+	<key>IDESourceControlProjectName</key>
+	<string>videoSpiral</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>68B2BA23-EB56-4F8B-96A1-7CC7FEB0C040</key>
+		<string>https://github.com/fishkingsin/DanceViva.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>videoSpiral/videoSpiral.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>68B2BA23-EB56-4F8B-96A1-7CC7FEB0C040</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/fishkingsin/DanceViva.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>68B2BA23-EB56-4F8B-96A1-7CC7FEB0C040</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>68B2BA23-EB56-4F8B-96A1-7CC7FEB0C040</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DanceViva</string>
+		</dict>
+	</array>
+</dict>
+</plist>
