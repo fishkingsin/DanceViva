@@ -87,7 +87,7 @@ public:
     //buoyancy
 //    Buoyancy buoyancy;
     vector<Particle*> particles;
-    void addParticle(float x , int y);
+    void addParticle(float x , float y , float vx, float vy);
     string text;
     int charIndex;
     ofImage image;

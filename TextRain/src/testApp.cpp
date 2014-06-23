@@ -164,19 +164,19 @@ void testApp::update(){
         for(it = particles.begin() ; it!=particles.end() ; ++it)
         {
             Particle * p = *it;
-//            p->update();
+            p->update();
 
-            ofVec3f rot(
-                        ofSignedNoise(t,p->pos.y/div, p->pos.z/div)*noiseStrength,
-                        ofSignedNoise(p->pos.x/div, t, p->pos.z/div)*noiseStrength,
-                        0);//ofSignedNoise(billboards.getVertex(i).x/div, billboards.getVertex(i).y/div, t)*noiseStrength);
-            
-            rot *=   ofGetLastFrameTime();
-            p->vel += rot;
-            p->oldpos = p->pos;
-            p->pos += p->vel;
-            p->vel*=p->damp;
-            if(p->age<80)p->age++;
+//            ofVec3f rot(
+//                        ofSignedNoise(t,p->pos.y/div, p->pos.z/div)*noiseStrength,
+//                        ofSignedNoise(p->pos.x/div, t, p->pos.z/div)*noiseStrength,
+//                        0);//ofSignedNoise(billboards.getVertex(i).x/div, billboards.getVertex(i).y/div, t)*noiseStrength);
+//            
+//            rot *=   ofGetLastFrameTime();
+//            p->vel += rot;
+//            p->oldpos = p->pos;
+//            p->pos += p->vel;
+//            p->vel*=p->damp;
+//            if(p->age<80)p->age++;
         }
     }
     else if(sense2_mode==1)
@@ -290,7 +290,17 @@ void testApp::keyPressed(int key){
             break;
             case 'r':
 //            buoyancy.toggleRain();
-            
+            {
+                //    vel.x = (((sinf(ofRandomf())*ofRandom(-500,500))+ofGetWidth()*0.5)-pos.x)*0.02;
+                //    vel.y = (((cosf(ofRandomf())*ofRandom(-500,500))+ofGetHeight()*0.5)-pos.y)*0.02;
+                
+                for(int i = 0 ; i < 10 ; i ++)
+                {
+                    float vx = (((sinf(ofRandomf())*ofRandom(-800,800))+ofGetWidth()*0.5)-mouseX)*0.02;
+                    float vy = (((cosf(ofRandomf())*ofRandom(-800,800))+ofGetHeight()*0.5)-mouseY)*0.02;
+                    addParticle(mouseX,mouseY,vx,vy);
+                }
+            }
             break;
             case 'R':
 //            buoyancy.toggleRainTex();
@@ -322,16 +332,20 @@ void testApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
-    addParticle(x,y);
+//    for(int i =0 ; i < 10 ; i++)
+    {
+        addParticle(x,y,0,0);
+    }
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
     if(sense2_mode==0)
     {
-
-        addParticle(x,y);
-
+//for(int i =0 ; i < 10 ; i++)
+//{
+//        addParticle(x,y);
+//}
         
 //        buoyancy.addRain(x, y, mText[ofRandom(mText.size()-1)]);
     }
@@ -439,7 +453,7 @@ void testApp::setupInput(int index)
         return ;
 }
 
-void testApp::addParticle(float x , int y)
+void testApp::addParticle(float x , float y , float vx, float vy)
 {
     if(charIndex < text.length())
     {
@@ -447,6 +461,7 @@ void testApp::addParticle(float x , int y)
         string t = "";
         t += text[charIndex];
         particle->pos.set(x,y,0);
+        particle->vel.set(vx,vy,0);
         particle->setup(&font, t);
         
         particles.push_back(particle);

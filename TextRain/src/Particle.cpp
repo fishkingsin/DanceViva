@@ -9,8 +9,7 @@
 #include "Particle.h"
 
 void Particle:: setup(ofxTrueTypeFontUC *_type , string _theCharacter) {
-    vel.x = (((sinf(ofRandomf())*ofRandom(-500,500))+ofGetWidth()*0.5)-pos.x)*0.02;
-    vel.y = (((cosf(ofRandomf())*ofRandom(-500,500))+ofGetHeight()*0.5)-pos.y)*0.02;
+
     angle = ofRandomf()*TWO_PI;
     age = 0;
     type = _type;
@@ -24,7 +23,8 @@ void Particle::draw() {
     ofPushStyle();
     ofSetColor(255,255,255,255*((100.0f-age)/100.0f));
     ofTranslate(pos.x,pos.y);
-
+    float scale = ofMap(age, 0, 50, 0, 1);
+    ofScale(scale, scale);
     if(type)type->drawString(theCharacter, 0, 0);
         ofPopStyle();
     ofPopMatrix();
@@ -32,20 +32,28 @@ void Particle::draw() {
 }
 
 void Particle::update() {
-    float noisePower = 0.4;
-    float noiseStrength = 0.6;
-    float t = (ofGetElapsedTimef()) * noisePower;
+    float t = (ofGetElapsedTimef()) * 0.9;
 	float div = 250.0;
 	float cur = ofGetElapsedTimef();
-    ofVec3f rot(
-                ofSignedNoise(t,pos.y/div, pos.z/div)*noiseStrength,
-                ofSignedNoise(pos.x/div, t, pos.z/div)*noiseStrength,
-                0);//ofSignedNoise(billboards.getVertex(i).x/div, billboards.getVertex(i).y/div, t)*noiseStrength);
+    float noiseStrength = 0.7;
     
-    rot *=   ofGetLastFrameTime();
-    vel += rot;
+    ofVec3f vec(
+                ofSignedNoise(t, pos.y/div,pos.z/div)*noiseStrength,
+                ofSignedNoise(pos.x/div, t, pos.z/div)*noiseStrength,
+                ofSignedNoise(pos.x/div, t, pos.y/div)*noiseStrength);
+//    angle += ofSignedNoise(vel.x, vel.y)*TWO_PI;
+    if(vel.x>10)
+    {
+        vec *= vel ;
+    }
+    else
+    {
+            
+        vec *= 5;
+    }
+//    vel.rotate(angle,ofVec3f(0,0,1));
     oldpos = pos;
     vel*=damp;
-    pos += vel;
-    if(age<20)age++;
+    pos += vel+vec;
+    if(age<80)age++;
 }
