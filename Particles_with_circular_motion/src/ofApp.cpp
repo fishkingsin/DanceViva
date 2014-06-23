@@ -3,7 +3,8 @@ bool isDraw = false;
 int ALPHA = 50;
 //--------------------------------------------------------------
 void ofApp::setup(){
-    img.loadImage("Finale-silhouette.jpg");
+    player.loadMovie("Finale-silhouette.mov");
+    player.setLoopState(OF_LOOP_NONE);
     bAuto = false;
     ofSetBackgroundAuto(false);
     ofSetFrameRate(30);
@@ -15,7 +16,8 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    ofSetWindowTitle(ofToString(ofGetFrameRate(),0));
+    player.update();
+//    ofSetWindowTitle(ofToString(ofGetFrameRate(),0));
     for (int i=0; i<particles.size(); i++) {
         particles[i].update();
     }
@@ -74,17 +76,24 @@ void ofApp::draw(){
 
 }
 void ofApp::createParticle() {
-    float x = ofRandom(0, fbo.getWidth());
-    float y = ofRandom(0,fbo.getHeight());
-    ofColor c = img.getColor(x,y);
-    if(c == ofColor::white)
+
+    if(player.isFrameNew())
     {
+        float x = ofRandom(0, fbo.getWidth());
+        float y = ofRandom(0,fbo.getHeight());
+        ofColor c = player.getPixelsRef().getColor(x,y);
+        
+        while(c == ofColor::white)
+        {
+            c = player.getPixelsRef().getColor(x,y);
+        }
         Particle p;
         p.setup();
         p.pos.set(x,y);
-        p.color = img.getColor(p.pos.x,p.pos.y);
+        p.color = player.getPixelsRef().getColor(p.pos.x,p.pos.y);
         particles.push_back(p);
     }
+
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
@@ -97,7 +106,7 @@ void ofApp::keyPressed(int key){
 //        ofSetBackgroundAuto(bAuto);
         for (int i=0; i<particles.size(); i++) {
             Particle &p = particles[i];
-            p.toggleCircularMotion();
+            p.toggleCircularMotion(fbo.getWidth()*(mouseX*1.0f/ofGetWidth()),fbo.getHeight()*(mouseY*1.0f/ofGetHeight()));
         }
     }
 }

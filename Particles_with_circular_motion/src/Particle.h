@@ -22,6 +22,6 @@ public:
     void circularMotion();
     void noiseMotion();
     bool isCircularMotion;
-    void toggleCircularMotion();
+    void toggleCircularMotion(float centerX, float centerY);
     ofVec2f newTarget;
 };

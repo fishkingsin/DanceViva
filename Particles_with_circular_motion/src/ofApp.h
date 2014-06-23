@@ -20,7 +20,7 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     void createParticle();
-    ofImage img;
+    ofVideoPlayer player;
     
     vector<Particle> particles;
     ofFbo fbo;

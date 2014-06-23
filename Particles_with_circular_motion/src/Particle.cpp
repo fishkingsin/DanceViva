@@ -32,14 +32,13 @@ void Particle::update() {
         noiseMotion();
     }
 }
-void Particle::toggleCircularMotion()
+void Particle::toggleCircularMotion(float centerX, float centerY)
 {
     isCircularMotion = !isCircularMotion;
     if(!isCircularMotion)
     {
-        newTarget.x = ofRandom(pos.x-100,pos.x+100);
-        newTarget.y = ofRandom(pos.y-100,pos.y+100);
-        vel = (newTarget-pos)*0.05;
+        newTarget = ofVec2f(centerX - pos.x , centerY - pos.y);
+        vel = (-newTarget)*0.05;
     }
 }
 void Particle::circularMotion()
@@ -62,7 +61,7 @@ void Particle::noiseMotion()
                 ofSignedNoise(t, pos.y/div,pos.x/div)*noiseStrength,
                 ofSignedNoise(pos.x/div, t, pos.y/div)*noiseStrength,
                 0);
-    vec *= 10 * ofGetLastFrameTime();
+    vec *= 10 ;
     oldpos = pos;
     pos += vel+vec;
     age++;
