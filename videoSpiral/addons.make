@@ -1,0 +1,6 @@
+ofxOsc
+ofxXmlSettings
+ofxDuration
+ofxSyphon
+ofxUI
+ofxRange

@@ -5,20 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>3883780D-933D-4340-B79A-B89A58CE5186</string>
+	<string>0F759877-202F-4E25-8B5D-1F52F228E6FF</string>
 	<key>IDESourceControlProjectName</key>
 	<string>videoSpiral</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>3CAB9E6E-B264-4AB2-9F65-F0707485D261</key>
+		<string>https://github.com/YCAMInterlab/ofxDuration.git</string>
+		<key>51AEB073-23CD-400F-A1D5-E3C93F1AA6F5</key>
+		<string>https://github.com/Flightphase/ofxRange.git</string>
 		<key>68B2BA23-EB56-4F8B-96A1-7CC7FEB0C040</key>
 		<string>https://github.com/fishkingsin/DanceViva.git</string>
+		<key>EC1D5A6D-0D78-4A7E-A136-7A770F530D88</key>
+		<string>https://github.com/rezaali/ofxUI.git</string>
+		<key>F005D72D-CFB1-463C-9386-C29745A53C1E</key>
+		<string>https://github.com/astellato/ofxSyphon.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>videoSpiral/videoSpiral.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>3CAB9E6E-B264-4AB2-9F65-F0707485D261</key>
+		<string>../../../../../addons/ofxDuration</string>
+		<key>51AEB073-23CD-400F-A1D5-E3C93F1AA6F5</key>
+		<string>../../../../../addons/ofxRange</string>
 		<key>68B2BA23-EB56-4F8B-96A1-7CC7FEB0C040</key>
 		<string>../../..</string>
+		<key>EC1D5A6D-0D78-4A7E-A136-7A770F530D88</key>
+		<string>../../../../../addons/ofxUI</string>
+		<key>F005D72D-CFB1-463C-9386-C29745A53C1E</key>
+		<string>../../../../../addons/ofxSyphon</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/fishkingsin/DanceViva.git</string>
@@ -35,6 +51,38 @@
 			<string>68B2BA23-EB56-4F8B-96A1-7CC7FEB0C040</string>
 			<key>IDESourceControlWCCName</key>
 			<string>DanceViva</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3CAB9E6E-B264-4AB2-9F65-F0707485D261</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxDuration</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>51AEB073-23CD-400F-A1D5-E3C93F1AA6F5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxRange</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F005D72D-CFB1-463C-9386-C29745A53C1E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxSyphon</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EC1D5A6D-0D78-4A7E-A136-7A770F530D88</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxUI</string>
 		</dict>
 	</array>
 </dict>
