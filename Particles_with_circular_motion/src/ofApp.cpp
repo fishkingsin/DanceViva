@@ -73,25 +73,25 @@ void ofApp::draw(){
     while (particles.size()>10000) {
         particles.erase(particles.begin());
     }
+//    player.draw(0,0,100,100);
 
 }
 void ofApp::createParticle() {
 
-    if(player.isFrameNew())
+//    if(player.isFrameNew())
     {
-        float x = ofRandom(0, fbo.getWidth());
-        float y = ofRandom(0,fbo.getHeight());
+        float x = ofRandom(0, player.getWidth());
+        float y = ofRandom(0,player.getHeight());
         ofColor c = player.getPixelsRef().getColor(x,y);
         
-        while(c == ofColor::white)
+        if(c == ofColor::white)
         {
-            c = player.getPixelsRef().getColor(x,y);
+            Particle p;
+            p.setup();
+            p.pos.set(x,y);
+            p.color = player.getPixelsRef().getColor(p.pos.x,p.pos.y);
+            particles.push_back(p);
         }
-        Particle p;
-        p.setup();
-        p.pos.set(x,y);
-        p.color = player.getPixelsRef().getColor(p.pos.x,p.pos.y);
-        particles.push_back(p);
     }
 
 }
@@ -129,6 +129,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     isDraw = !isDraw;
+    player.play();
 }
 
 //--------------------------------------------------------------

@@ -18,7 +18,7 @@ void Particle::setup() {
 }
 
 void Particle::draw() {
-    ofSetColor(color,ofMap(age,0,100,255,50,true));
+    ofSetColor(color,ofMap(age,0,100,255,0,true));
     ofLine(oldpos,pos);
     ofRect(pos,5,5);
 }

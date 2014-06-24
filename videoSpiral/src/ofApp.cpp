@@ -137,13 +137,16 @@ void ofApp::draw(){
 
 
         ofTranslate(x2, y2 ,FValueDepth*i);
-        ofPushMatrix();
-        ofTranslate(-player.getWidth()*0.5,-player.getHeight()*0.5 , -NUM_TEXTURE*FValueDepth);
-        ofRotate(rx, 1, 0, 0);
-        ofRotate(ry, 0, 1, 0);
-        ofRotate(rz, 0, 0, 1);
-        textures[i].draw(0,0,player.getWidth(),player.getHeight());
-        ofPopMatrix();
+            ofPushMatrix();
+
+                ofRotate(rx, 1, 0, 0);
+                ofRotate(ry, 0, 1, 0);
+                ofRotate(rz, 0, 0, 1);
+                ofPushMatrix();
+                    ofTranslate(-player.getWidth()*0.5,-player.getHeight()*0.5 , -NUM_TEXTURE*FValueDepth);
+                textures[i].draw(0,0,player.getWidth(),player.getHeight());
+                ofPopMatrix();
+            ofPopMatrix();
         ofPopMatrix();
     }
     ofPopMatrix();
