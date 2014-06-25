@@ -1,0 +1,49 @@
+<tracks>
+    <page>
+        <name>Page One</name>
+        <track>
+            <type>Audio</type>
+            <xmlFileName></xmlFileName>
+            <trackName>audio</trackName>
+            <displayName>audio</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>0</receiveOSC>
+            <clip>/Users/james/Development/of_v0.8.1_osx_release/apps/DanceViva/TextRain/bin/data/How_To_Be_Alone.aif</clip>
+        </track>
+        <track>
+            <type>Flags</type>
+            <xmlFileName>flags_.xml</xmlFileName>
+            <trackName>flags</trackName>
+            <displayName>text</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>0</receiveOSC>
+        </track>
+        <track>
+            <type>Flags</type>
+            <xmlFileName>flags_0_.xml</xmlFileName>
+            <trackName>flags_0</trackName>
+            <displayName>command</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>0</receiveOSC>
+        </track>
+    </page>
+</tracks>
+<timelineSettings>
+    <duration>00:04:34:364</duration>
+    <playhead>00:02:23:982</playhead>
+    <inpoint>00:00:00:000</inpoint>
+    <outpoint>00:04:34:364</outpoint>
+    <loop>0</loop>
+</timelineSettings>
+<projectSettings>
+    <useBPM>0</useBPM>
+    <bpm>120.000000000</bpm>
+    <snapToBPM>1</snapToBPM>
+    <snapToKeys>1</snapToKeys>
+    <oscInEnabled>1</oscInEnabled>
+    <oscOutEnabled>1</oscOutEnabled>
+    <oscInPort>12346</oscInPort>
+    <oscIP>localhost</oscIP>
+    <oscOutPort>12345</oscOutPort>
+    <oscRate>30.000000000</oscRate>
+</projectSettings>

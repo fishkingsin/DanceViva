@@ -1,0 +1,12 @@
+<keyframes>
+    <key>
+        <flag>mode1</flag>
+        <time>00:02:20:443</time>
+        <value>0.383928597</value>
+    </key>
+    <key>
+        <flag>mode2</flag>
+        <time>00:02:26:319</time>
+        <value>0.392857134</value>
+    </key>
+</keyframes>
