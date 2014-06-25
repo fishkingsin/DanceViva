@@ -14,6 +14,7 @@
 #include "ofxXmlSettings.h"
 #include "Particle.h"
 #include "ofxSyphon.h"
+#include "ofxDuration.h"
 class MData
 {
 public:
@@ -43,6 +44,8 @@ public:
     void nextText();
     void prevText();
     
+    void createRipple(string target , int x ,int y);
+    
     //mode2
     void Mode2Setup();
     void Mode2Update();
@@ -62,7 +65,8 @@ public:
     //filter 
     ofxGlow     glow;
     float radius;
-    vector <string >targetString;
+    vector <string >targetStrings;
+    string targetString;
     int selectedText;
     
     //syphon
@@ -88,10 +92,19 @@ public:
 //    Buoyancy buoyancy;
     vector<Particle*> particles;
     void addParticle(float x , float y , float vx, float vy);
-    string text;
+    string m_text;
     int charIndex;
     ofImage image;
     //vector<ofImage> rainTexes;
     ofxXmlSettings xml;
     ofxSyphonServer syphon;
+
+    
+    ofxDuration duration;
+    
+	void trackUpdated(ofxDurationEventArgs& args);
+//        string bang_text;
+    MText *bang_mtext;
+    
+    
 };

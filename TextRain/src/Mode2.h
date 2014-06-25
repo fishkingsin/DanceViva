@@ -15,7 +15,7 @@
 void testApp::Mode2Setup()
 {
     sense2_mode = 0;
-    selectedText = targetString.size()-1;
+    selectedText = targetStrings.size()-1;
     if(xml.loadFile("text.xml"))
     {
         if(xml.pushTag("XML"))
@@ -27,7 +27,7 @@ void testApp::Mode2Setup()
             string text = xml.getAttribute("TEXT","text","NaN",i);
 //            wstring wstr;
 //            utf8ToWStr(text.c_str(),wstr);
-            targetString.push_back(text);
+            targetStrings.push_back(text);
 //            ofLogVerbose() << "wstr = "<< text;
         }
             
@@ -176,9 +176,7 @@ void testApp::Mode2Update()
                     MText * ptr = *it1;
                     if(ABS(_d->deltaR-ofDist(ptr->x,ptr->y,_d->deltaX,_d->deltaY))<20)
                     {
-                        
-                        string target = targetString[selectedText];
-                        ptr->checkHit(target);
+                        ptr->checkHit(targetString);
                     }
                     
                 }

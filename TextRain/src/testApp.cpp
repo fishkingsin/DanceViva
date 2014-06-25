@@ -95,7 +95,8 @@ void testApp::setup(){
     ofFile file("text/t2.txt");
     ofBuffer buffer = file.readToBuffer();
     charIndex = 0;
-    text = buffer.getText();
+    m_text = buffer.getText();
+    
     //mB2d.setup();
 //    buoyancy.setup();
 //    buoyancy.drawable = mText[ofRandom(mText.size()-1)];
@@ -103,7 +104,45 @@ void testApp::setup(){
 
     //mainOutputSyphonServer.setName("Simple Server");
     syphon.setName("TextRain");
+    
+    duration.setup(12345);
+	//ofxDuration is an OSC receiver, with special functions to listen for Duration specific messages
+	//optionally set up a font for debugging
+	duration.setupFont("MONACO.TTF", 12);
+	ofAddListener(duration.events.trackUpdated, this, &testApp::trackUpdated);
 }
+//--------------------------------------------------------------
+//Or wait to receive messages, sent only when the track changed
+void testApp::trackUpdated(ofxDurationEventArgs& args){
+	ofLogVerbose("Duration Event") << "track type " << args.track->type << " updated with name " << args.track->name << " and value " << args.track->value << endl;
+    if(args.track->name=="/text")
+    {
+        ofLogVerbose(args.track->name) << args.track->flag;
+        targetString = args.track->flag;
+        bang_mtext = new MText();
+        bang_mtext->setup(&font,0,1);
+        bang_mtext->m_string = targetString;
+        bang_mtext->old.set(ofGetWidth()*0.5,ofGetHeight()*0.5);
+        bang_mtext->ofPoint::set(ofGetWidth()*0.5,ofGetHeight()*0.5,0);
+
+        bang_mtext->scale = 1;
+        bang_mtext->rotation = 0;
+        mText.push_back(bang_mtext);
+        createRipple(targetString, ofRandom(0,ofGetWidth()), ofRandom(0, ofGetHeight()));
+    }
+    if(args.track->name=="/command")
+    {
+        if( args.track->flag == "mode1")
+        {
+            keyPressed('1');
+        }
+        else if( args.track->flag == "mode2")
+        {
+            keyPressed('2');
+        }
+    }
+}
+
 //this captures all our control panel events - unless its setup differently in testApp::setup
 //--------------------------------------------------------------
 void testApp::eventsIn(guiCallbackData & data)
@@ -252,10 +291,10 @@ void testApp::keyPressed(int key){
             {
                 
                 MText * ptr = *it1;
-                string target = targetString[selectedText];
-                for(int i = 0 ; i < target.length() ; i++)
+                targetString = targetStrings[selectedText];
+                for(int i = 0 ; i < targetString.length() ; i++)
                 {
-                    if(ptr->lightUp(target[i]))                            
+                    if(ptr->lightUp(targetString[i]))
                     {
                         break;
                     }
@@ -313,12 +352,12 @@ void testApp::keyPressed(int key){
 void testApp::nextText()
 {
     selectedText++;
-    selectedText%=targetString.size();
+    selectedText%=targetStrings.size();
 }
 void testApp::prevText()
 {
     selectedText--;
-    (selectedText<0)?selectedText=targetString.size()-1:selectedText;
+    (selectedText<0)?selectedText=targetStrings.size()-1:selectedText;
 }
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
@@ -352,26 +391,31 @@ void testApp::mousePressed(int x, int y, int button){
     else if(sense2_mode==1)
     {
         nextText();
-        ofLogVerbose("targetString:") << targetString[selectedText];
-        MData *_data = new MData();
-        _data->deltaX = x;
-        _data->deltaY = y;
-        _data->isStarted = true;
-        _data->deltaR = 0;
-        mData.push_back(_data);
-        bool bRotate = xml.getAttribute("TEXT","rotate",false,selectedText);
-        bool bScale = xml.getAttribute("TEXT","scale",false,selectedText);
-        vector<MText*>::iterator it1;
-        for(it1=mText.begin(); it1!=mText.end();++it1)
-        {
-            MText * ptr = *it1;
-            ptr->setScale(bScale);
-            ptr->setRotate(bRotate);
-        }
-    radius = 7;
+        ofLogVerbose("targetString:") << targetStrings[selectedText];
+        createRipple( targetStrings[selectedText] ,x,y);
     }
 }
 
+void testApp::createRipple(string target , int x ,int y)
+{
+    targetString = target;
+    MData *_data = new MData();
+    _data->deltaX = x;
+    _data->deltaY = y;
+    _data->isStarted = true;
+    _data->deltaR = 0;
+    mData.push_back(_data);
+    bool bRotate = xml.getAttribute("TEXT","rotate",false,selectedText);
+    bool bScale = xml.getAttribute("TEXT","scale",false,selectedText);
+    vector<MText*>::iterator it1;
+    for(it1=mText.begin(); it1!=mText.end();++it1)
+    {
+        MText * ptr = *it1;
+        ptr->setScale(bScale);
+        ptr->setRotate(bRotate);
+    }
+    radius = 7;
+}
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
     
@@ -455,11 +499,11 @@ void testApp::setupInput(int index)
 
 void testApp::addParticle(float x , float y , float vx, float vy)
 {
-    if(charIndex < text.length())
+    if(charIndex < m_text.length())
     {
         Particle* particle = new Particle();
         string t = "";
-        t += text[charIndex];
+        t += m_text[charIndex];
         particle->pos.set(x,y,0);
         particle->vel.set(vx,vy,0);
         particle->setup(&font, t);
