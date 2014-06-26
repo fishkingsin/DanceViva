@@ -13,7 +13,7 @@ public:
     
     void setup(ofxTrueTypeFontUC *type , string theCharacter);
     void draw();
-    void update();
+//    void update();
     
     ofVec3f pos,vel,acc,oldpos;
     float angle;

@@ -1,12 +1,17 @@
 <keyframes>
     <key>
         <flag>mode1</flag>
-        <time>00:02:20:443</time>
-        <value>0.383928597</value>
+        <time>00:00:01:688</time>
+        <value>0.415639937</value>
     </key>
     <key>
         <flag>mode2</flag>
-        <time>00:02:26:319</time>
-        <value>0.392857134</value>
+        <time>00:00:44:953</time>
+        <value>0.310344815</value>
+    </key>
+    <key>
+        <flag>fadeout</flag>
+        <time>00:04:03:128</time>
+        <value>0.413793087</value>
     </key>
 </keyframes>

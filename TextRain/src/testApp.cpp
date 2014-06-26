@@ -1,6 +1,12 @@
 #include "testApp.h"
 #include "Mode2.h"
 bool bDebug = false;
+float emmitX  = 0;
+float emmitY  = 0;
+bool bEmmit = false;
+float noisePower = 0.4;
+float noiseStrength = 0.6;
+
 //--------------------------------------------------------------
 void testApp::setup(){
     ofSetFrameRate(25);
@@ -62,6 +68,10 @@ void testApp::setup(){
     play_mode.push_back("Sense3");
     gui.addSlider("BUOYANCY_INTERVAL","BUOYANCY_INTERVAL",1000,0,5000,true);
     gui.addMultiToggle("play_mode", "play_mode", 0, play_mode);
+    gui.addSlider("emmitX","emmitX",0,0,ofGetWidth() , false);
+    gui.addSlider("emmitY","emmitY",0,0,ofGetHeight() , false);
+    gui.addSlider("noisePower","noisePower",0,0,10 , false);
+    gui.addSlider("noiseStrength","noiseStrength",0,0,10 , false);
     gui.setWhichColumn(2);
     
     //    vector <string> boxNames;
@@ -85,9 +95,9 @@ void testApp::setup(){
     
     gui.setDraw(false);
     gui.loadSettings("control_gui.xml");
-    sense2_mode = 1 ;
+    sense_mode = 1 ;
     //gui
-
+    
     //
     Mode2Setup();
     
@@ -98,10 +108,10 @@ void testApp::setup(){
     m_text = buffer.getText();
     
     //mB2d.setup();
-//    buoyancy.setup();
-//    buoyancy.drawable = mText[ofRandom(mText.size()-1)];
+    //    buoyancy.setup();
+    //    buoyancy.drawable = mText[ofRandom(mText.size()-1)];
     
-
+    
     //mainOutputSyphonServer.setName("Simple Server");
     syphon.setName("TextRain");
     
@@ -117,18 +127,22 @@ void testApp::trackUpdated(ofxDurationEventArgs& args){
 	ofLogVerbose("Duration Event") << "track type " << args.track->type << " updated with name " << args.track->name << " and value " << args.track->value << endl;
     if(args.track->name=="/text")
     {
-        ofLogVerbose(args.track->name) << args.track->flag;
-        targetString = args.track->flag;
-        bang_mtext = new MText();
-        bang_mtext->setup(&font,0,1);
-        bang_mtext->m_string = targetString;
-        bang_mtext->old.set(ofGetWidth()*0.5,ofGetHeight()*0.5);
-        bang_mtext->ofPoint::set(ofGetWidth()*0.5,ofGetHeight()*0.5,0);
-
-        bang_mtext->scale = 1;
-        bang_mtext->rotation = 0;
-        mText.push_back(bang_mtext);
-        createRipple(targetString, ofRandom(0,ofGetWidth()), ofRandom(0, ofGetHeight()));
+        if(sense_mode==1)
+        {
+            ofLogVerbose(args.track->name) << args.track->flag;
+            targetString = args.track->flag;
+            //        bang_mtext = new MText();
+            //        bang_mtext->setup(&font,0,1);
+            //        bang_mtext->m_string = targetString;
+            //        bang_mtext->old.set(ofGetWidth()*0.5,ofGetHeight()*0.5);
+            //        bang_mtext->ofPoint::set(ofGetWidth()*0.5,ofGetHeight()*0.5,0);
+            //        bang_mtext->x = ofGetWidth()*0.5;
+            //        bang_mtext->y = ofGetHeight()*0.5;
+            //        bang_mtext->scale = 1;
+            //        bang_mtext->rotation = 0;
+            //        mText.push_back(bang_mtext);
+            createRipple(targetString, ofRandom(0,ofGetWidth()), ofRandom(0, ofGetHeight()));
+        }
     }
     if(args.track->name=="/command")
     {
@@ -140,6 +154,23 @@ void testApp::trackUpdated(ofxDurationEventArgs& args){
         {
             keyPressed('2');
         }
+        else if( args.track->flag == "fadeout")
+        {
+            keyPressed('3');
+        }
+    }if(args.track->name=="/emmit")
+    {
+        bEmmit = args.track->on;
+        //         addParticle(emmitX,emmitY,0,0);
+        
+    }
+    if(args.track->name=="/noisePower")
+    {
+        noisePower = args.track->value;
+    }
+    if(args.track->name=="/noiseStrength")
+    {
+        noiseStrength = args.track->value;
     }
 }
 
@@ -190,38 +221,81 @@ void testApp::eventsIn(guiCallbackData & data)
 //--------------------------------------------------------------
 void testApp::update(){
     updateGUI();
-    if(sense2_mode==0)
+    //    if(sense_mode==0)
     {
-//        buoyancy.interval = gui.getValueI("BUOYANCY_INTERVAL");
-//        buoyancy.update(mText,mouseX);
+        if(bEmmit)
+        {
+            //            for(int i = 0 ; i < 10 ; i ++)
+            {
+                float hW = ofGetWidth()*0.5;
+                float hH = ofGetHeight()*0.5;
+                float vx = (((sinf(ofRandomf())*ofRandom(-hW,hW))+hW)-emmitX)*0.02;
+                float vy = (((cosf(ofRandomf())*ofRandom(-hH,hH))+hH)-emmitY)*0.02;
+                addParticle(emmitX,emmitY,vx,vy);
+            }
+        }
+        //        buoyancy.interval = gui.getValueI("BUOYANCY_INTERVAL");
+        //        buoyancy.update(mText,mouseX);
+        
         vector<Particle*>::iterator it;
-        float noisePower = 0.4;
-        float noiseStrength = 0.6;
         float t = (ofGetElapsedTimef()) * noisePower;
         float div = 250.0;
         float cur = ofGetElapsedTimef();
+        if(sense_mode == 2 )
+        {
+            if(charIndex>0)
+            {
+    //            float hW = ofGetWidth()*0.5;
+    //            float hH = ofGetHeight()*0.5;
+                float vx = (emmitX - particles[charIndex]->pos.x)*0.02;
+                float vy = (emmitY - particles[charIndex]->pos.y)*0.02;
+                particles[charIndex]->vel.set(vx,vy);
+                charIndex--;
+            }
+        }
         for(it = particles.begin() ; it!=particles.end() ; ++it)
         {
+            
             Particle * p = *it;
-            p->update();
-
-//            ofVec3f rot(
-//                        ofSignedNoise(t,p->pos.y/div, p->pos.z/div)*noiseStrength,
-//                        ofSignedNoise(p->pos.x/div, t, p->pos.z/div)*noiseStrength,
-//                        0);//ofSignedNoise(billboards.getVertex(i).x/div, billboards.getVertex(i).y/div, t)*noiseStrength);
-//            
-//            rot *=   ofGetLastFrameTime();
-//            p->vel += rot;
-//            p->oldpos = p->pos;
-//            p->pos += p->vel;
-//            p->vel*=p->damp;
-//            if(p->age<80)p->age++;
+            
+            ofVec3f vec(
+                        ofSignedNoise(t, p->pos.y/div,p->pos.z/div)*noiseStrength,
+                        ofSignedNoise(p->pos.x/div, t, p->pos.z/div)*noiseStrength,
+                        ofSignedNoise(p->pos.x/div, t, p->pos.y/div)*noiseStrength);
+            if(p->vel.x>10)
+            {
+                vec *= p->vel*10 ;
+            }
+            else
+            {
+                
+                vec *= 5;
+            }
+            
+            p->oldpos = p->pos;
+            
+            
+            p->pos += p->vel+vec;
+            if(sense_mode == 2 )
+            {
+                float dist = ofDist(p->pos.x,p->pos.y,emmitX,emmitY);
+                p->age = (dist>80)?80:dist;
+//                if(p->age>0)p->age--;
+            }
+            else
+            {
+                p->vel*=p->damp;
+                if(p->age<80)p->age++;
+            }
+            
+            
         }
     }
-    else if(sense2_mode==1)
+    if(sense_mode==1)
     {
         Mode2Update();
     }
+    
     
 }
 
@@ -231,10 +305,14 @@ void testApp::draw(){
     glClearColor(0,0,0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     ofEnableAlphaBlending();
-
-    if(sense2_mode==0)
+    if(sense_mode==1)
     {
-       
+        
+        Mode2Draw();
+    }
+    //    if(sense_mode==0)
+    {
+        
         vector<Particle*>::iterator it;
         for(it = particles.begin() ; it!=particles.end() ; ++it)
         {
@@ -242,13 +320,10 @@ void testApp::draw(){
             p->draw();
         }
         
-//        buoyancy.draw(mText);
+        //        buoyancy.draw(mText);
     }
-    else if(sense2_mode==1)
-    {
-
-        Mode2Draw();
-    }
+    //    else
+    
     ofDisableAlphaBlending();
     //if(ss.size()>selectedText)font.drawString(ss[selectedText], 20, ofGetHeight()-64);
     //mainOutputSyphonServer.publishScreen();
@@ -261,18 +336,20 @@ void testApp::keyPressed(int key){
     vector<MText*>::iterator it1;
     switch (key)
     {
-            case '1':
-            sense2_mode = 0;
+        case '1':
+            charIndex = 0;
+            sense_mode = 0;
+            clearParticle();
             break;
         case '2':
-            while(!particles.empty())
-            {
-                Particle* p = particles.back();
-                p->~Particle();
-                particles.pop_back();
-            }
-            sense2_mode = 1;
+            //            clearParticle();
+            sense_mode = 1;
             break;
+        case '3' :
+            sense_mode = 2;
+            charIndex = this->particles.size()-1;
+            break;
+            
         case ']':
             gui.setWhichPanel(gui.getWhichPanel()+1);
             break;
@@ -291,7 +368,7 @@ void testApp::keyPressed(int key){
             {
                 
                 MText * ptr = *it1;
-                targetString = targetStrings[selectedText];
+                //                targetString = targetStrings[selectedText];
                 for(int i = 0 ; i < targetString.length() ; i++)
                 {
                     if(ptr->lightUp(targetString[i]))
@@ -300,9 +377,9 @@ void testApp::keyPressed(int key){
                     }
                 }
             }
-
+            
             break;
-
+            
         case OF_KEY_RETURN:
             for(it1=mText.begin(); it1!=mText.end();++it1)
             {
@@ -312,7 +389,7 @@ void testApp::keyPressed(int key){
             
             break;
         case '\\':
-            (sense2_mode==1)?sense2_mode=0:sense2_mode=1;
+            (sense_mode==1)?sense_mode=0:sense_mode=1;
             break;
         case ' ' :
             bDebug = !bDebug;
@@ -327,24 +404,24 @@ void testApp::keyPressed(int key){
                 gui.setDraw(false);
             }
             break;
-            case 'r':
-//            buoyancy.toggleRain();
+        case 'r':
+            //            buoyancy.toggleRain();
+        {
+            //    vel.x = (((sinf(ofRandomf())*ofRandom(-500,500))+ofGetWidth()*0.5)-pos.x)*0.02;
+            //    vel.y = (((cosf(ofRandomf())*ofRandom(-500,500))+ofGetHeight()*0.5)-pos.y)*0.02;
+            
+            for(int i = 0 ; i < 10 ; i ++)
             {
-                //    vel.x = (((sinf(ofRandomf())*ofRandom(-500,500))+ofGetWidth()*0.5)-pos.x)*0.02;
-                //    vel.y = (((cosf(ofRandomf())*ofRandom(-500,500))+ofGetHeight()*0.5)-pos.y)*0.02;
-                
-                for(int i = 0 ; i < 10 ; i ++)
-                {
-                    float vx = (((sinf(ofRandomf())*ofRandom(-800,800))+ofGetWidth()*0.5)-mouseX)*0.02;
-                    float vy = (((cosf(ofRandomf())*ofRandom(-800,800))+ofGetHeight()*0.5)-mouseY)*0.02;
-                    addParticle(mouseX,mouseY,vx,vy);
-                }
+                float vx = (((sinf(ofRandomf())*ofRandom(-300,300))+ofGetWidth()*0.5)-mouseX)*0.02;
+                float vy = (((cosf(ofRandomf())*ofRandom(-300,300))+ofGetHeight()*0.5)-mouseY)*0.02;
+                addParticle(mouseX,mouseY,vx,vy);
             }
+        }
             break;
-            case 'R':
-//            buoyancy.toggleRainTex();
+        case 'R':
+            //            buoyancy.toggleRainTex();
             break;
-            case 'f':
+        case 'f':
             ofToggleFullscreen();
             break;
     }
@@ -352,12 +429,12 @@ void testApp::keyPressed(int key){
 void testApp::nextText()
 {
     selectedText++;
-    selectedText%=targetStrings.size();
+    //    selectedText%=targetStrings.size();
 }
 void testApp::prevText()
 {
     selectedText--;
-    (selectedText<0)?selectedText=targetStrings.size()-1:selectedText;
+    //    (selectedText<0)?selectedText=targetStrings.size()-1:selectedText;
 }
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
@@ -371,7 +448,7 @@ void testApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
-//    for(int i =0 ; i < 10 ; i++)
+    //    for(int i =0 ; i < 10 ; i++)
     {
         addParticle(x,y,0,0);
     }
@@ -379,20 +456,20 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-    if(sense2_mode==0)
+    if(sense_mode==0)
     {
-//for(int i =0 ; i < 10 ; i++)
-//{
-//        addParticle(x,y);
-//}
+        //for(int i =0 ; i < 10 ; i++)
+        //{
+        //        addParticle(x,y);
+        //}
         
-//        buoyancy.addRain(x, y, mText[ofRandom(mText.size()-1)]);
+        //        buoyancy.addRain(x, y, mText[ofRandom(mText.size()-1)]);
     }
-    else if(sense2_mode==1)
+    else if(sense_mode==1)
     {
         nextText();
-        ofLogVerbose("targetString:") << targetStrings[selectedText];
-        createRipple( targetStrings[selectedText] ,x,y);
+        //        ofLogVerbose("targetString:") << targetStrings[selectedText];
+        createRipple( targetString ,x,y);
     }
 }
 
@@ -432,10 +509,14 @@ void testApp::gotMessage(ofMessage msg){
 }
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
+void testApp::dragEvent(ofDragInfo dragInfo){
     
 }
 void testApp::updateGUI(){
+    emmitX  = gui.getValueF("emmitX");
+    emmitY  = gui.getValueF("emmitY");
+    //    noisePower = gui.getValueF("noisePower");
+    //    noiseStrength = gui.getValueF("noiseStrength");
     //    int selected = gui.getValueI("CAMERA_PROFILE");
     //    if (selected!=currentSelected)
     //    {
@@ -489,7 +570,7 @@ void testApp::setupInput()
     filebuf *buff =  textFile.getFileBuffer();
     
     
-    //process text file 
+    //process text file
 }
 void testApp::setupInput(int index)
 {
@@ -512,4 +593,12 @@ void testApp::addParticle(float x , float y , float vx, float vy)
         charIndex++;
     }
 }
-
+void testApp::clearParticle()
+{
+    while(!particles.empty())
+    {
+        Particle* p = particles.back();
+        p->~Particle();
+        particles.pop_back();
+    }
+}

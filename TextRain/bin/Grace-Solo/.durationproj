@@ -26,11 +26,39 @@
             <sendOSC>1</sendOSC>
             <receiveOSC>0</receiveOSC>
         </track>
+        <track>
+            <type>Switches</type>
+            <xmlFileName>switches_.xml</xmlFileName>
+            <trackName>switches</trackName>
+            <displayName>emmit</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>0</receiveOSC>
+        </track>
+        <track>
+            <type>Curves</type>
+            <xmlFileName>curves_.xml</xmlFileName>
+            <trackName>curves</trackName>
+            <displayName>noiseStrength</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>1</receiveOSC>
+            <min>0.000000000</min>
+            <max>1.000000000</max>
+        </track>
+        <track>
+            <type>Curves</type>
+            <xmlFileName>curves_0_.xml</xmlFileName>
+            <trackName>curves_0</trackName>
+            <displayName>noisePower</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>1</receiveOSC>
+            <min>0.000000000</min>
+            <max>1.000000000</max>
+        </track>
     </page>
 </tracks>
 <timelineSettings>
     <duration>00:04:34:364</duration>
-    <playhead>00:02:23:982</playhead>
+    <playhead>00:04:24:475</playhead>
     <inpoint>00:00:00:000</inpoint>
     <outpoint>00:04:34:364</outpoint>
     <loop>0</loop>

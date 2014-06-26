@@ -14,9 +14,9 @@
 
 void testApp::Mode2Setup()
 {
-    sense2_mode = 0;
-    selectedText = targetStrings.size()-1;
-    if(xml.loadFile("text.xml"))
+    sense_mode = 0;
+//    selectedText = targetStrings.size()-1;
+/*    if(xml.loadFile("text.xml"))
     {
         if(xml.pushTag("XML"))
         {
@@ -48,7 +48,7 @@ void testApp::Mode2Setup()
 //        targetString.push_back(wstring(L"空虛的房間圍繞"));
 //        targetString.push_back(wstring(L"回憶"));
 //        targetString.push_back(wstring(L"她身影"));
-    }
+    }*/
     
     
     string str;// (L"人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚愛上一個從來沒有愛過自己人其實是痛苦我要搬家了收拾東西時找到一本相冊才發現照片裡都裝著滿滿美好回憶一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實失去你我最對不起是我自己回到只屬於自己新家後只有空虛的房間圍繞著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有她身影人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚其實是我要搬家了收拾東西時找到一本才發現照片裡都裝著滿滿一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實我最是回到只屬於自己新家後只有著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚其實是我要搬家了收拾東西時找到一本才發現照片裡都裝著滿滿一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實我最是回到只屬於自己新家後只有著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚其實是我要搬家了收拾東西時找到一本才發現照片裡都裝著滿滿一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實我最是回到只屬於自己新家後只有著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有人在情緒低時候就容易誤會容易看不到真實容易把別人對你好當成對你愛心裡其實很清楚其實是我要搬家了收拾東西時找到一本才發現照片裡都裝著滿滿一邊回憶過去一邊翻著每一頁記得每次和她說對不起後我眼淚就止不住其實我最是回到只屬於自己新家後只有著我每當我和別人說起我過去點點滴滴才發現每個故事裡都有");
@@ -61,6 +61,9 @@ void testApp::Mode2Setup()
         string line = buffer.getText();
 
         words = ofSplitString(line, delimiter);
+        for (int i  = 0 ;  i < words.size(); i++) {
+            ofLogVerbose("T2")<<words[i];
+        }
         //want to erase first char
         //if txt is encode in BOM
 //        if(line[0]==0xEF && line[1]==0xBB && line[2]== 0xBF)
@@ -74,14 +77,14 @@ void testApp::Mode2Setup()
     }
     
     int counter = 0;
-    int fSize = 32;
+    int fSize = 24;
     font.loadFont("Times New Roman.ttf",fSize,true,true);
     float lastX = 0;
     float lastY = fSize;
     for(int i = 0 ; i < words.size() ; i++)
     {
         string _word = words[counter%words.size()];
-        int x = lastX;
+        int x = lastX+fSize;
         lastX = x+font.stringWidth(_word);
         if(lastX>ofGetWidth())
         {
@@ -99,9 +102,9 @@ void testApp::Mode2Setup()
             newText->old.y = y;//+ofRandomf()*fSize-(fSize/2);
             newText->x = newText->old.x;//i+ofRandomf()*fSize-(fSize/2);
             newText->y = newText->old.y;//j+ofRandomf()*fSize-(fSize/2);
-            newText->z = ofRandom(-200,00);
+//            newText->z = ofRandom(-200,00);
             
-            newText->setup(&font,counter,1);
+            newText->setup(&font,counter,0);
             counter++;
             newText->m_string = _word;//(L"1");
 
@@ -128,7 +131,7 @@ void testApp::Mode2Setup()
 void testApp::Mode2Draw()
 {    
     
-    switch(sense2_mode)
+    switch(sense_mode)
     {
         case 0:
 //            ofClear(255,255,255, 255);
@@ -155,7 +158,7 @@ void testApp::Mode2Update()
         MText * ptr = *it1;
         ptr->update();
     }
-    if(sense2_mode==1)
+    if(sense_mode==1)
     {
         
 //        int hitNum[5];
@@ -176,7 +179,15 @@ void testApp::Mode2Update()
                     MText * ptr = *it1;
                     if(ABS(_d->deltaR-ofDist(ptr->x,ptr->y,_d->deltaX,_d->deltaY))<20)
                     {
-                        ptr->checkHit(targetString);
+                        vector<string>subTargetString = ofSplitString(targetString," ");
+                        for(int i = 0 ; i < subTargetString.size() ; i++)
+                        {
+//                            ofLogVerbose("subTargetString") << subTargetString[i];
+                            if(ptr->checkHit(subTargetString[i]))
+                            {
+                                break;
+                            }
+                        }
                     }
                     
                 }

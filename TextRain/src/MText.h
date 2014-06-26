@@ -18,16 +18,16 @@ public:
         rotation = 0;
         scale = 1;
         delay = 0;
-        color = 0;
+        color = ofColor(255,255,255);
         old.set(0,0);
         
         bScale = bRotate = false;   
     }
     void setup(ofxTrueTypeFontUC *_font,int _index,float _alpha = 0)
     {
-        color.r = 0;
-        color.g = 0;
-        color.b = 0;
+        color.r = 255;
+        color.g = 255;
+        color.b = 255;
         color.a = _alpha*255;
         index = _index;
         font = _font;
@@ -72,7 +72,7 @@ public:
         color.b = 255;
         
         tweenIn.setParameters(1,easingcubic,ofxTween::easeOut,0,1,200,0);
-        if(m_string.find(target)==string::npos)
+        if(strcmp(m_string.c_str(), target.c_str()) != 0)
         {
            
             tweenOut.setParameters(2,easingcubic,ofxTween::easeOut,1,0,500,100);
@@ -117,7 +117,7 @@ public:
     }
     void draw()
     {
-        draw(ofPoint::x,ofPoint::y);
+        draw(x,y);
     }
     void draw(float _x,float _y){
         if(color.a>0)

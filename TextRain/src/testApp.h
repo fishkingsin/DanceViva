@@ -53,7 +53,7 @@ public:
     void drawText();
     
     //sense2
-    int sense2_mode;
+    int sense_mode;
     vector<MText*>mText;
     vector<MData*>mData;
     ofxTrueTypeFontUC font;
@@ -65,7 +65,7 @@ public:
     //filter 
     ofxGlow     glow;
     float radius;
-    vector <string >targetStrings;
+//    vector <string >targetStrings;
     string targetString;
     int selectedText;
     
@@ -105,6 +105,8 @@ public:
 	void trackUpdated(ofxDurationEventArgs& args);
 //        string bang_text;
     MText *bang_mtext;
+    
+    void clearParticle();
     
     
 };

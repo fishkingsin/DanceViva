@@ -31,29 +31,29 @@ void Particle::draw() {
 
 }
 
-void Particle::update() {
-    float t = (ofGetElapsedTimef()) * 0.9;
-	float div = 250.0;
-	float cur = ofGetElapsedTimef();
-    float noiseStrength = 0.7;
-    
-    ofVec3f vec(
-                ofSignedNoise(t, pos.y/div,pos.z/div)*noiseStrength,
-                ofSignedNoise(pos.x/div, t, pos.z/div)*noiseStrength,
-                ofSignedNoise(pos.x/div, t, pos.y/div)*noiseStrength);
-//    angle += ofSignedNoise(vel.x, vel.y)*TWO_PI;
-    if(vel.x>10)
-    {
-        vec *= vel ;
-    }
-    else
-    {
-            
-        vec *= 5;
-    }
-//    vel.rotate(angle,ofVec3f(0,0,1));
-    oldpos = pos;
-    vel*=damp;
-    pos += vel+vec;
-    if(age<80)age++;
-}
+//void Particle::update() {
+//    float t = (ofGetElapsedTimef()) * 0.9;
+//	float div = 250.0;
+//	float cur = ofGetElapsedTimef();
+//    float noiseStrength = 0.7;
+//    
+//    ofVec3f vec(
+//                ofSignedNoise(t, pos.y/div,pos.z/div)*noiseStrength,
+//                ofSignedNoise(pos.x/div, t, pos.z/div)*noiseStrength,
+//                ofSignedNoise(pos.x/div, t, pos.y/div)*noiseStrength);
+////    angle += ofSignedNoise(vel.x, vel.y)*TWO_PI;
+//    if(vel.x>10)
+//    {
+//        vec *= vel ;
+//    }
+//    else
+//    {
+//            
+//        vec *= 5;
+//    }
+////    vel.rotate(angle,ofVec3f(0,0,1));
+//    oldpos = pos;
+//    vel*=damp;
+//    pos += vel+vec;
+//    if(age<80)age++;
+//}
