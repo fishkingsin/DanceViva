@@ -1,0 +1,98 @@
+<positions>
+    <element name="audio">
+        <x>0.000000000</x>
+        <y>142.000000000</y>
+        <width>1300.000000000</width>
+        <height>23.000000000</height>
+    </element>
+    <element name="bangs">
+        <x>0.000000000</x>
+        <y>504.000000000</y>
+        <width>1300.000000000</width>
+        <height>163.000000000</height>
+    </element>
+    <element name="colors">
+        <x>0.000000000</x>
+        <y>456.000000000</y>
+        <width>1344.000000000</width>
+        <height>28.000000000</height>
+    </element>
+    <element name="curves">
+        <x>0.000000000</x>
+        <y>142.000000000</y>
+        <width>1344.000000000</width>
+        <height>25.000000000</height>
+    </element>
+    <element name="curves_0">
+        <x>0.000000000</x>
+        <y>191.000000000</y>
+        <width>1344.000000000</width>
+        <height>19.000000000</height>
+    </element>
+    <element name="curves_1">
+        <x>0.000000000</x>
+        <y>234.000000000</y>
+        <width>1344.000000000</width>
+        <height>20.000000000</height>
+    </element>
+    <element name="curves_2">
+        <x>0.000000000</x>
+        <y>318.000000000</y>
+        <width>1344.000000000</width>
+        <height>26.000000000</height>
+    </element>
+    <element name="curves_3">
+        <x>0.000000000</x>
+        <y>368.000000000</y>
+        <width>1344.000000000</width>
+        <height>22.000000000</height>
+    </element>
+    <element name="flags">
+        <x>0.000000000</x>
+        <y>278.000000000</y>
+        <width>1344.000000000</width>
+        <height>16.000000000</height>
+    </element>
+    <element name="flags_0">
+        <x>0.000000000</x>
+        <y>581.000000000</y>
+        <width>1300.000000000</width>
+        <height>29.000000000</height>
+    </element>
+    <element name="lfo">
+        <x>0.000000000</x>
+        <y>200.000000000</y>
+        <width>1300.000000000</width>
+        <height>224.000000000</height>
+    </element>
+    <element name="switches">
+        <x>0.000000000</x>
+        <y>414.000000000</y>
+        <width>1344.000000000</width>
+        <height>18.000000000</height>
+    </element>
+    <element name="switches_0">
+        <x>0.000000000</x>
+        <y>508.000000000</y>
+        <width>1344.000000000</width>
+        <height>30.000000000</height>
+    </element>
+    <element name="switches_1">
+        <x>0.000000000</x>
+        <y>562.000000000</y>
+        <width>1344.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="video_h">
+        <x>0.000000000</x>
+        <y>453.000000000</y>
+        <width>1300.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="video_w">
+        <x>0.000000000</x>
+        <y>389.000000000</y>
+        <width>1300.000000000</width>
+        <height>40.000000000</height>
+    </element>
+</positions>

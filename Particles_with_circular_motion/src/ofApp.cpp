@@ -1,32 +1,178 @@
 #include "ofApp.h"
 bool isDraw = false;
 int ALPHA = 50;
+float imageScaleX = 0, imageScaleY = 0;
+float emmitX = 0 , emmitY = 0;
+bool isFaceout = false;
+bool isRain = false;
+bool isHead = false;
+ofColor particle_color;
+
 //--------------------------------------------------------------
 void ofApp::setup(){
-    player.loadMovie("Finale-silhouette.mov");
-    player.setLoopState(OF_LOOP_NONE);
-    bAuto = false;
+    ofSetLogLevel(OF_LOG_VERBOSE);
+    image.loadImage("Finale-silhouette.png");
+    headImage.loadImage("headImage.jpg");
+    fboImage.allocate(image.getWidth(),image.getHeight());
+//    player.setLoopState(OF_LOOP_NONE);
+//    player.play();
+//    player.setPaused(true);
+    bAutoBG = false;
     ofSetBackgroundAuto(false);
     ofSetFrameRate(30);
     ofEnableAlphaBlending();
     ofBackground(0);
-    fbo.allocate(1920,1080,GL_RGBA);
+    fbo.allocate(ofGetWidth(),ofGetHeight(),GL_RGBA);
+    glow.allocate(ofGetWidth(), ofGetHeight());
+    glow.setPasses(3);
+    glow.setRadius(7);
     server.setName("particle_silhouette");
+    duration.setup(12345);
+	//ofxDuration is an OSC receiver, with special functions to listen for Duration specific messages
+	//optionally set up a font for debugging
+    duration.setupFont("GUI/NewMedia Fett.ttf", 12);
+	ofAddListener(duration.events.trackUpdated, this, &ofApp::trackUpdated);
+    videoScale = 1;
 }
-
 //--------------------------------------------------------------
-void ofApp::update(){
-    player.update();
-//    ofSetWindowTitle(ofToString(ofGetFrameRate(),0));
-    for (int i=0; i<particles.size(); i++) {
-        particles[i].update();
+//Or wait to receive messages, sent only when the track changed
+void ofApp::trackUpdated(ofxDurationEventArgs& args){
+	ofLogVerbose("Duration Event") << "track type " << args.track->type << " updated with name " << args.track->name << " and value " << args.track->value << endl;
+    if(args.track->name == "/video_x")
+    {
+        videoPos.x = args.track->value;
+    }
+    else if(args.track->name == "/video_y")
+    {
+        videoPos.y = args.track->value;
+    }
+    else if(args.track->name == "/video_scale")
+    {
+        videoScale = args.track->value;
+    }
+    else if(args.track->name == "/emmitX")
+    {
+        emmitX = args.track->value;
+    }
+    else if(args.track->name == "/emmitY")
+    {
+        emmitY = args.track->value;
+    }
+    else if(args.track->name == "/command")
+    {
+        if(args.track->flag=="start")
+        {
+            isDraw = !isDraw;
+            
+//            player.play();
+        }
+        else if(args.track->flag=="")
+        {
+
+            
+        }
+    }
+    else if(args.track->name == "/fadeout")
+    {
+        isFaceout = args.track->on;
+        if(isFaceout)toggleNoiseMode(emmitX,emmitY);
+    }
+    else if(args.track->name == "/rain")
+    {
+        bAutoBG = true;
+        isRain = args.track->on;
+//        if(isFaceout)toggleNoiseMode(emmitX,emmitY);
+    }
+    else if(args.track->name == "/head")
+    {
+        isHead = args.track->on;
+    }
+    
+    else if(args.track->name == "/particle_color")
+    {
+        particle_color = args.track->color;
+        
     }
 }
 
 //--------------------------------------------------------------
+void ofApp::update(){
+    imageScaleX = (image.getWidth()*videoScale);
+    imageScaleY = (image.getHeight()*videoScale);
+    fboImage.begin();
+    ofPushStyle();
+    ofSetColor(255);
+    if(isHead)
+    {
+        headImage.draw(0,0,ofgetWidth(),ofGetHeight());
+    }
+    else
+    {
+        image.draw(videoPos.x, videoPos.y, imageScaleX, imageScaleY);
+    }
+    ofPopStyle();
+    ofPopMatrix();
+    fboImage.end();
+    if(isFaceout)
+    {
+        float targetY = emmitY-ofRandom(100,200);
+        float targetX = emmitX+ofRandom(-100,100);
+        for(int i = 0 ; i < 5 ; i++)
+        {
+            createFadeoutParticle(emmitX,emmitY,targetX,targetY);
+        }
+    }
+    if(isRain)
+    {
+
+        float targetX = ofRandom(-10,10);
+        int r = ofRandom(3,5);
+        for(int i = 0 ; i < r ; i++)
+        {
+            createRain(ofRandom(0,ofGetWidth()),-100,targetX,ofGetHeight()-ofRandom(100,200));
+        }
+
+    }
+    //    if(!bAutoBG)
+    {
+        if(isHead)
+        {
+            for (int i=0; i<50; i++) {
+                createParticle(0,0, ofGetWidth(),ofGetHeight());
+            }
+        }
+        else if(isDraw && !isRain && !isFaceout && !isHead)
+        {
+            for (int i=0; i<50; i++) {
+                createParticle(videoPos.x,videoPos.y,videoPos.x+imageScaleX,videoPos.y+imageScaleY);
+            }
+        }
+        
+    }
+    
+    
+//    player.update();
+//    ofSetWindowTitle(ofToString(ofGetFrameRate(),0));
+    for(it = particles.begin() ; it!=particles.end() ; ++it) {
+        Particle &p = *it;
+        p.update();
+        if(p.age<=0)
+        {
+            particles.erase(it);
+            --it;
+        }
+        
+    }
+
+}
+
+//--------------------------------------------------------------
 void ofApp::draw(){
+
+    // begin scene to post process
+    glow.begin();
     fbo.begin();
-    if(bAuto)
+    if(isRain)
     {
         if(ALPHA<255)
         {
@@ -52,48 +198,105 @@ void ofApp::draw(){
 //        img.draw(0,0);
 //    }
     
-    for (int i=0; i<particles.size(); i++) {
-        Particle &p = particles[i];
+    for(it = particles.begin() ; it!=particles.end() ; ++it) {
+        Particle &p = *it;
         //p.color = img.getColor(p.pos.x,p.pos.y);
         p.draw();
     }
-    if(!bAuto)
-    {
-    if(isDraw)
-    {
-        for (int i=0; i<100; i++) {
-            createParticle();
-        }
-    }
-    }
+
+    
     fbo.end();
     ofSetColor(255);
-    fbo.draw(0,0,1280,720);
-    server.publishTexture(&fbo.getTextureReference());
-    while (particles.size()>10000) {
+    fbo.draw(0,0,ofGetWidth(),ofGetHeight());
+    glow.end();
+    glow.draw();
+    
+    server.publishScreen();
+    
+    ofPushStyle();
+    ofPushStyle();
+    ofSetColor(255,255,255,50);
+    fboImage.draw(0,0,fboImage.getWidth(),fboImage.getHeight());
+    ofPopStyle();
+    ofNoFill();
+    ofSetColor(255,0,0);
+    
+    ofRect(videoPos.x, videoPos.y, imageScaleX, imageScaleY);
+    ofRect(emmitX,emmitY,10,10);
+    ofPopStyle();
+    
+    while (particles.size()>5000) {
         particles.erase(particles.begin());
     }
 //    player.draw(0,0,100,100);
 
 }
-void ofApp::createParticle() {
+void ofApp::createParticle(int minX , int minY , int maxX ,int maxY) {
 
 //    if(player.isFrameNew())
     {
-        float x = ofRandom(0, player.getWidth());
-        float y = ofRandom(0,player.getHeight());
-        ofColor c = player.getPixelsRef().getColor(x,y);
+        float x = ofRandom(minX,maxX);
+        float y = ofRandom(minY,maxY);
+        ofPixels pixel;
+        fboImage.readToPixels(pixel);
+        ofColor c = pixel.getColor(x,y);
         
         if(c == ofColor::white)
         {
             Particle p;
             p.setup();
             p.pos.set(x,y);
-            p.color = player.getPixelsRef().getColor(p.pos.x,p.pos.y);
+            p.color = pixel.getColor(x,y);
             particles.push_back(p);
         }
     }
 
+}
+void ofApp::createFadeoutParticle(int minX , int minY , int maxX ,int maxY) {
+    
+    //    if(player.isFrameNew())
+//    {
+//        float x = ofRandom(minX,maxX);
+//        float y = ofRandom(minY,maxY);
+//        ofPixels pixel;
+//        fboImage.readToPixels(pixel);
+//        ofColor c = pixel.getColor(x,y);
+        
+//        if(c == ofColor::white)
+        {
+            Particle p;
+            p.setup();
+            p.pos.set(minX,minY);
+            p.color = particle_color;
+            p.mode = NOISE;
+            p.vel = -ofVec2f(p.pos.x+ofRandom(-200,200) - p.pos.x , p.pos.y+ofRandom(-200,200) - p.pos.y)*0.05;
+            particles.push_back(p);
+        }
+//    }
+    
+}
+void ofApp::createRain(int startX , int startY , int endX ,int endY) {
+    
+    //    if(player.isFrameNew())
+    //    {
+//    float x = ofRandom(minX,maxX);
+//    float y = ofRandom(minY,maxY);
+    //        ofPixels pixel;
+    //        fboImage.readToPixels(pixel);
+    //        ofColor c = pixel.getColor(x,y);
+    
+    //        if(c == ofColor::white)
+    {
+        Particle p;
+        p.setup();
+        p.pos.set(startX,startY);
+        p.color = particle_color;
+        p.mode = RAIN;
+        p.vel = ofVec2f(0,endY-startY)*ofRandomf()*0.05;
+        particles.push_back(p);
+    }
+    //    }
+    
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
@@ -102,15 +305,18 @@ void ofApp::keyPressed(int key){
     if (key=='Q') ofDisableSmoothing();
     if(key == '1')
     {
-        bAuto = !bAuto;
-//        ofSetBackgroundAuto(bAuto);
-        for (int i=0; i<particles.size(); i++) {
-            Particle &p = particles[i];
-            p.toggleCircularMotion(fbo.getWidth()*(mouseX*1.0f/ofGetWidth()),fbo.getHeight()*(mouseY*1.0f/ofGetHeight()));
-        }
+        toggleNoiseMode(fbo.getWidth()*(mouseX*1.0f/ofGetWidth()),fbo.getHeight()*(mouseY*1.0f/ofGetHeight()));
     }
 }
-
+void ofApp::toggleNoiseMode(float tx, float ty)
+{
+    //bAutoBG = !bAutoBG;
+    //        ofSetBackgroundAuto(bAutoBG);
+    for(it = particles.begin() ; it!=particles.end() ; ++it) {
+        Particle &p = *it;
+        p.switchMode(NOISE,tx,ty);
+    }
+}
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
 
@@ -129,7 +335,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     isDraw = !isDraw;
-    player.play();
+//    player.play();
 }
 
 //--------------------------------------------------------------

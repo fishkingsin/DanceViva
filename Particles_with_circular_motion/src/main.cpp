@@ -24,7 +24,7 @@ int main( ){
     
 	ofPtr<ofBaseRenderer> renderer(new ofGLProgrammableRenderer(false));
 	ofSetCurrentRenderer(renderer, false);
-	ofSetupOpenGL(1280,720,OF_WINDOW);			// <-------- setup the GL context
+	ofSetupOpenGL(1024,768,OF_WINDOW);			// <-------- setup the GL context
     
 #else
 	// we are not using the progammable gl renderer.
@@ -36,7 +36,7 @@ int main( ){
 	// let's check if the current openGL context provides us with glDrawElementsInstanced
 	// we do this after we have initialised our openGL context.
     
-	ofSetupOpenGL(1280,720,OF_WINDOW);			// <-------- setup the GL context
+	ofSetupOpenGL(1024,768,OF_WINDOW);			// <-------- setup the GL context
 	
 	ostringstream extStr;
 	extStr << (char*)glGetString(GL_EXTENSIONS);		// first get all available extensions.

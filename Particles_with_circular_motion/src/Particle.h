@@ -7,7 +7,12 @@
 //
 
 #include "ofMain.h"
-
+enum PARTICLE_MODE
+{
+    CIRCULAR,
+    NOISE,
+    RAIN,
+};
 class Particle {
 public:
     
@@ -21,7 +26,11 @@ public:
     int age;
     void circularMotion();
     void noiseMotion();
-    bool isCircularMotion;
-    void toggleCircularMotion(float centerX, float centerY);
+    void rainMotion();
+//    bool isCircularMotion;
+    PARTICLE_MODE mode;
+    void switchMode(PARTICLE_MODE _mode, float centerX, float centerY);
     ofVec2f newTarget;
+    
+    
 };

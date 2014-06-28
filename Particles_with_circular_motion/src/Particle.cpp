@@ -13,29 +13,51 @@ void Particle::setup() {
     vel.y = 2*ofRandomf();
     angle = ofRandomf()*TWO_PI;
     age = 0;
-    isCircularMotion = true;
+    mode = CIRCULAR;
     
 }
 
 void Particle::draw() {
-    ofSetColor(color,ofMap(age,0,100,255,0,true));
+    ofPushStyle();
+    if(mode == RAIN)
+
+    {
+        ofSetColor(color,ofMap(age,0,100,255,100,true));
+    }
+    else
+    {
+        
+        ofSetColor(color,ofMap(age,0,100,255,0,true));
+    }
+    ofSetLineWidth(2);
     ofLine(oldpos,pos);
-    ofRect(pos,5,5);
+    ofRect(pos.x-1,pos.y-1,2,2);
+    ofPopStyle();
 }
 
 void Particle::update() {
-    if(isCircularMotion)
+    if(mode == CIRCULAR)
     {
         circularMotion();
     }
-    else{
+    else if(mode == NOISE)
+    {
         noiseMotion();
     }
+    else if(mode == RAIN)
+    {
+        rainMotion();
+    }
 }
-void Particle::toggleCircularMotion(float centerX, float centerY)
+void Particle::switchMode(PARTICLE_MODE _mode, float centerX, float centerY)
 {
-    isCircularMotion = !isCircularMotion;
-    if(!isCircularMotion)
+    mode == _mode;
+    if(mode == NOISE)
+    {
+        newTarget = ofVec2f(centerX - pos.x , centerY - pos.y);
+        vel = (-newTarget)*0.05;
+    }
+    else if(mode == RAIN)
     {
         newTarget = ofVec2f(centerX - pos.x , centerY - pos.y);
         vel = (-newTarget)*0.05;
@@ -64,6 +86,23 @@ void Particle::noiseMotion()
     vec *= 10 ;
     oldpos = pos;
     pos += vel+vec;
+    age++;
+    
+}
+void Particle::rainMotion()
+{
+//    float t = (ofGetElapsedTimef()) * 0.3;
+//	float div = 250.0;
+//	float cur = ofGetElapsedTimef();
+//    float noiseStrength = 0.2;
+//    
+//    ofVec3f vec(
+//                ofSignedNoise(t, pos.y/div,pos.x/div)*noiseStrength,
+//                ofSignedNoise(pos.x/div, t, pos.y/div)*noiseStrength,
+//                0);
+//    vec *= 5 ;
+    oldpos = pos;
+    pos += vel;//+vec;
     age++;
     
 }

@@ -3,6 +3,9 @@
 #include "ofMain.h"
 #include "Particle.h"
 #include "ofxSyphon.h"
+#include "ofxFX.h"
+#include "ofxGlow.h"
+#include "ofxDuration.h"
 class ofApp : public ofBaseApp{
 
 	public:
@@ -20,10 +23,26 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     void createParticle();
-    ofVideoPlayer player;
+    void createParticle(int minX , int minY , int maxX ,int maxY);
+    void createFadeoutParticle(int minX , int minY , int maxX ,int maxY);
+    void createRain(int startX , int startY , int endX ,int endY);
+    void toggleNoiseMode(float tx, float ty);
+//    ofVideoPlayer player;
+    ofImage image,headImage;
     
     vector<Particle> particles;
+    vector<Particle>::iterator it;
+    ofFbo fboImage;
     ofFbo fbo;
-    bool bAuto;
+    bool bAutoBG;
     ofxSyphonServer server;
+    
+    ofxGlow     glow;
+    
+    ofxDuration duration;
+    
+	void trackUpdated(ofxDurationEventArgs& args);
+    ofPoint videoPos;
+    float videoScale;
+
 };
