@@ -29,9 +29,9 @@ void Particle::draw() {
         
         ofSetColor(color,ofMap(age,0,100,255,0,true));
     }
-    ofSetLineWidth(2);
+    ofSetLineWidth(5);
     ofLine(oldpos,pos);
-    ofRect(pos.x-1,pos.y-1,2,2);
+    ofRect(pos.x-2.5,pos.y-2.5,5,5);
     ofPopStyle();
 }
 
@@ -51,9 +51,10 @@ void Particle::update() {
 }
 void Particle::switchMode(PARTICLE_MODE _mode, float centerX, float centerY)
 {
-    mode == _mode;
+    mode = _mode;
     if(mode == NOISE)
     {
+        
         newTarget = ofVec2f(centerX - pos.x , centerY - pos.y);
         vel = (-newTarget)*0.05;
     }

@@ -3,8 +3,8 @@
 #include "ofMain.h"
 #include "Particle.h"
 #include "ofxSyphon.h"
-#include "ofxFX.h"
-#include "ofxGlow.h"
+//#include "ofxFX.h"
+//#include "ofxGlow.h"
 #include "ofxDuration.h"
 class ofApp : public ofBaseApp{
 
@@ -26,6 +26,7 @@ class ofApp : public ofBaseApp{
     void createParticle(int minX , int minY , int maxX ,int maxY);
     void createFadeoutParticle(int minX , int minY , int maxX ,int maxY);
     void createRain(int startX , int startY , int endX ,int endY);
+    void createHeadParticle(int minX , int minY , int maxX ,int maxY);
     void toggleNoiseMode(float tx, float ty);
 //    ofVideoPlayer player;
     ofImage image,headImage;
@@ -37,7 +38,7 @@ class ofApp : public ofBaseApp{
     bool bAutoBG;
     ofxSyphonServer server;
     
-    ofxGlow     glow;
+//    ofxGlow     glow;
     
     ofxDuration duration;
     

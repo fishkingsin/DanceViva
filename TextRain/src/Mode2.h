@@ -102,7 +102,7 @@ void testApp::Mode2Setup()
             newText->old.y = y;//+ofRandomf()*fSize-(fSize/2);
             newText->x = newText->old.x;//i+ofRandomf()*fSize-(fSize/2);
             newText->y = newText->old.y;//j+ofRandomf()*fSize-(fSize/2);
-//            newText->z = ofRandom(-200,00);
+            newText->z = ofRandom(-200,00);
             
             newText->setup(&font,counter,0);
             counter++;
@@ -124,32 +124,33 @@ void testApp::Mode2Setup()
         
         
     }
-    glow.allocate(ofGetWidth(), ofGetHeight());
-    glow.setPasses(3);
-    glow.setRadius(7);
+//    glow.allocate(ofGetWidth(), ofGetHeight());
+//    glow.setPasses(3);
+//    glow.setRadius(7);
 }
 void testApp::Mode2Draw()
 {    
     
-    switch(sense_mode)
-    {
-        case 0:
+//    switch(sense_mode)
+//    {
+//        case 0:
 //            ofClear(255,255,255, 255);
             drawText();
             
-            break;
-        case 1:
-            glow.draw();
-            
-            break;
-            
-    }
+//            break;
+//        case 1:
+//            glow.draw();
+    
+//            break;
+    
+//    }
     
 }
 void testApp::Mode2Update()
 {
     vector<MText*>::iterator it1;
     vector<MData*>::iterator it2;
+    vector<Particle*>::iterator it;
     current = ofGetElapsedTimeMillis();
     float timeDiff = current-pass;
     if(radius>0.1)radius-=(radius/timeDiff);
@@ -174,6 +175,15 @@ void testApp::Mode2Update()
             if(_d->isStarted)
             {
                 _d->deltaR+=timeDiff/2;
+                for(it = particles.begin() ; it!=particles.end() ; ++it)
+                {
+                    
+                    Particle * p = *it;
+                    if(ABS(_d->deltaR-ofDist(p->pos.x,p->pos.y,_d->deltaX,_d->deltaY))<10)
+                    {
+                        p->age=0;
+                    }
+                }
                 for(it1=mText.begin(); it1!=mText.end();++it1)
                 {
                     MText * ptr = *it1;
@@ -204,12 +214,12 @@ void testApp::Mode2Update()
         pass = current; 
         
         
-        glow.begin();
-        glow.setRadius(radius);
-        ofClear(0, 0, 0, 255);
+//        glow.begin();
+//        glow.setRadius(radius);
+//        ofClear(0, 0, 0, 255);
         
-        drawText();
-        glow.end();
+//        drawText();
+//        glow.end();
     }
     
 }

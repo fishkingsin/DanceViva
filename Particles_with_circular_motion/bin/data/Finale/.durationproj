@@ -9,7 +9,7 @@
             <sendOSC>1</sendOSC>
             <receiveOSC>1</receiveOSC>
             <min>0.000000000</min>
-            <max>1024.000000000</max>
+            <max>1280.000000000</max>
         </track>
         <track>
             <type>Curves</type>
@@ -19,7 +19,7 @@
             <sendOSC>1</sendOSC>
             <receiveOSC>1</receiveOSC>
             <min>0.000000000</min>
-            <max>768.000000000</max>
+            <max>720.000000000</max>
         </track>
         <track>
             <type>Curves</type>
@@ -47,7 +47,7 @@
             <sendOSC>1</sendOSC>
             <receiveOSC>1</receiveOSC>
             <min>0.000000000</min>
-            <max>1024.000000000</max>
+            <max>1280.000000000</max>
         </track>
         <track>
             <type>Curves</type>
@@ -57,7 +57,7 @@
             <sendOSC>1</sendOSC>
             <receiveOSC>1</receiveOSC>
             <min>0.000000000</min>
-            <max>768.000000000</max>
+            <max>720.000000000</max>
         </track>
         <track>
             <type>Switches</type>
@@ -96,16 +96,16 @@
 </tracks>
 <timelineSettings>
     <duration>00:04:34:364</duration>
-    <playhead>00:00:44:324</playhead>
+    <playhead>00:00:44:577</playhead>
     <inpoint>00:00:00:000</inpoint>
-    <outpoint>00:04:34:364</outpoint>
+    <outpoint>00:01:14:504</outpoint>
     <loop>0</loop>
 </timelineSettings>
 <projectSettings>
     <useBPM>0</useBPM>
     <bpm>120.000000000</bpm>
     <snapToBPM>1</snapToBPM>
-    <snapToKeys>0</snapToKeys>
+    <snapToKeys>1</snapToKeys>
     <oscInEnabled>1</oscInEnabled>
     <oscOutEnabled>1</oscOutEnabled>
     <oscInPort>12346</oscInPort>

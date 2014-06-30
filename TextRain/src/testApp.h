@@ -3,8 +3,8 @@
 #include "ofMain.h"
 #include "ofxTrueTypeFontUC.h"
 #include "ofxTween.h"
-#include "ofxFX.h"
-#include "ofxGlow.h"
+//#include "ofxFX.h"
+//#include "ofxGlow.h"
 //#include "ofxSyphon.h"
 #include "ofxAutoControlPanel.h"
 //#include "MyB2D.h"
@@ -63,7 +63,7 @@ public:
 //    MyB2D mB2d;
     
     //filter 
-    ofxGlow     glow;
+//    ofxGlow     glow;
     float radius;
 //    vector <string >targetStrings;
     string targetString;

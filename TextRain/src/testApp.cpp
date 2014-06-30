@@ -4,8 +4,8 @@ bool bDebug = false;
 float emmitX  = 0;
 float emmitY  = 0;
 bool bEmmit = false;
-float noisePower = 0.4;
-float noiseStrength = 0.6;
+float noisePower = 0;
+float noiseStrength = 0;
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -247,10 +247,19 @@ void testApp::update(){
             {
     //            float hW = ofGetWidth()*0.5;
     //            float hH = ofGetHeight()*0.5;
-                float vx = (emmitX - particles[charIndex]->pos.x)*0.02;
-                float vy = (emmitY - particles[charIndex]->pos.y)*0.02;
-                particles[charIndex]->vel.set(vx,vy);
-                charIndex--;
+                
+                int r = ofRandom(10,20);
+                for(int i = 0 ; i < r ; i++)
+                {
+                    if(charIndex<0)
+                    {
+                        break;
+                    }
+                    float vx = (emmitX - particles[charIndex]->pos.x)*0.05;
+                    float vy = (emmitY - particles[charIndex]->pos.y)*0.05;
+                    particles[charIndex]->vel.set(vx,vy);
+                    charIndex--;
+                }
             }
         }
         for(it = particles.begin() ; it!=particles.end() ; ++it)
@@ -280,6 +289,13 @@ void testApp::update(){
             {
                 float dist = ofDist(p->pos.x,p->pos.y,emmitX,emmitY);
                 p->age = (dist>80)?80:dist;
+                
+                if(dist <10)
+                {
+                    particles.erase(it);
+                    --it;
+                }
+//                p->alpha = dist;
 //                if(p->age>0)p->age--;
             }
             else
@@ -305,11 +321,6 @@ void testApp::draw(){
     glClearColor(0,0,0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     ofEnableAlphaBlending();
-    if(sense_mode==1)
-    {
-        
-        Mode2Draw();
-    }
     //    if(sense_mode==0)
     {
         
@@ -323,6 +334,12 @@ void testApp::draw(){
         //        buoyancy.draw(mText);
     }
     //    else
+    if(sense_mode==1)
+    {
+        
+        Mode2Draw();
+    }
+    
     
     ofDisableAlphaBlending();
     //if(ss.size()>selectedText)font.drawString(ss[selectedText], 20, ofGetHeight()-64);
