@@ -16,9 +16,9 @@ public:
 //    void update();
     
     ofVec3f pos,vel,acc,oldpos;
-    float angle;
+    float angle,magnitude;
     ofColor color;
-    int age;
+    int age,mass;
 //    float alpha;
     
     float damp;

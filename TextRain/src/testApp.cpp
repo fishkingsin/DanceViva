@@ -8,6 +8,26 @@ bool bEmmit = false;
 float noisePower = 0;
 float noiseStrength = 0;
 bool isGravity = false;
+float findAngle( float x, float y ) {
+    float theta;
+    if(x == 0) {
+        if(y > 0) {
+            theta = HALF_PI;
+        }
+        else if(y < 0) {
+            theta = 3*HALF_PI;
+        }
+        else {
+            theta = 0;
+        }
+    }
+    else {
+        theta = atan( y / x );
+        if(( x < 0 ) && ( y >= 0 )) { theta += PI; }
+        if(( x < 0 ) && ( y < 0 )) { theta -= PI; }
+    }
+    return theta;
+}
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -269,26 +289,52 @@ void testApp::update(){
             
             Particle * p = *it;
             
-            ofVec3f vec(
-                        ofSignedNoise(t, p->pos.y/div,p->pos.z/div)*noiseStrength,
-                        ofSignedNoise(p->pos.x/div, t, p->pos.z/div)*noiseStrength,
-                        ofSignedNoise(p->pos.x/div, t, p->pos.y/div)*noiseStrength);
             if(isGravity)
             {
-                p->angle += ofSignedNoise(p->pos.x,p->pos.y)*TWO_PI;
-                p->vel.rotate(p->angle, ofVec3f(mouseX,mouseY));
-                if(ofDist(p->pos.x,p->pos.y,mouseX,mouseY)>20)
-                {
-                    p->vel += (ofVec2f(mouseX,mouseY)-p->pos)*0.01;
+                
+                float F, mX, mY, A;
+              
+                int mouseMass = 50;
+                float distance =  ofDist(p->pos.x,p->pos.y,mouseX,mouseY);
+                if( distance != 0 ) {
+                    F = p->mass * mouseMass;
+                    F /= distance ;
+                    //F /= ( sq( x - Z.x ) + sq( y - Z.y ) );
+                    if( distance < 30 ) {
+                        F = 0.1;
+                    }
+                    mX = ( p->mass * p->pos.x + mouseMass * mouseX ) / ( p->mass + mouseMass );
+                    mY = ( p->mass * p->pos.y + mouseMass * mouseY ) / ( p->mass + mouseMass );
+                    A = atan2( mY-p->pos.y, mX-p->pos.x );
                     
-                }
+                    mX = F * cos(A);
+                    mY = F * sin(A);
+                    
+                    mX += p->magnitude * cos(p->angle);
+                    mY += p->magnitude * sin(p->angle);
+                    
+                    p->magnitude = sqrt( pow(mX,2) + pow(mY,2) );
+                    p->angle = findAngle( mX, mY );
 
-                p->pos += p->vel+vec;
-                p->vel*=p->damp;
+                    p->vel= ofVec2f((p->magnitude * cos(p->angle)), (p->magnitude * sin(p->angle)));
+                    p->pos+=p->vel;
+                    if(distance>10)
+                    {
+                        p->magnitude *= 0.95;
+                    }
+                    else
+                    {
+                        p->magnitude *= 0.9;
+                    }
+                }
             }
             else
             {
-                
+                ofVec3f vec(
+                            ofSignedNoise(t, p->pos.y/div,p->pos.z/div)*noiseStrength,
+                            ofSignedNoise(p->pos.x/div, t, p->pos.z/div)*noiseStrength,
+                            ofSignedNoise(p->pos.x/div, t, p->pos.y/div)*noiseStrength);
+
                 if(p->vel.x>10)
                 {
                     vec *= p->vel*10 ;
@@ -641,3 +687,4 @@ void testApp::clearParticle()
         particles.pop_back();
     }
 }
+

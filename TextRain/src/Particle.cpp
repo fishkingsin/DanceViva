@@ -13,6 +13,7 @@ void Particle:: setup(ofxTrueTypeFontUC *_type , string _theCharacter) {
     angle = ofRandomf()*TWO_PI;
     age = 0;
 //    alpha = 0;
+    mass = ofRandom(1,2.5);
     type = _type;
     theCharacter = _theCharacter;
     damp = 0.98;
