@@ -8,6 +8,8 @@ bool bEmmit = false;
 float noisePower = 0;
 float noiseStrength = 0;
 bool isGravity = false;
+bool bFreeDraw = false;
+ofVec2f freeDraw;
 float findAngle( float x, float y ) {
     float theta;
     if(x == 0) {
@@ -142,6 +144,7 @@ void testApp::setup(){
 	//optionally set up a font for debugging
 	duration.setupFont("MONACO.TTF", 12);
 	ofAddListener(duration.events.trackUpdated, this, &testApp::trackUpdated);
+    sender.setup("localhost", 12346);
 }
 //--------------------------------------------------------------
 //Or wait to receive messages, sent only when the track changed
@@ -194,6 +197,33 @@ void testApp::trackUpdated(ofxDurationEventArgs& args){
     {
         noiseStrength = args.track->value;
     }
+    else if(args.track->name=="/enable")
+    {
+        bFreeDraw = args.track->on;
+    }
+    else if(args.track->name=="/gravity")
+    {
+        isGravity = args.track->on;
+//        if(!isGravity)
+//        {
+//            vector<Particle*>::iterator it;
+//            for(it = particles.begin() ; it!=particles.end() ; ++it)
+//            {
+//                
+//                Particle * p = *it;
+//                p->vel = (ofVec2f(ofRandom(0,ofGetWidth()) , ofRandom(0,ofGetHeight())) - p->pos)*0.09;
+//            }
+//        }
+    }
+    else if(args.track->name=="/freedraw/x")
+    {
+        freeDraw.x = args.track->value*ofGetWidth();
+    }
+    else if(args.track->name=="/freedraw/y")
+    {
+        freeDraw.y = args.track->value*ofGetHeight();
+    }
+
 }
 
 //this captures all our control panel events - unless its setup differently in testApp::setup
@@ -244,6 +274,10 @@ void testApp::eventsIn(guiCallbackData & data)
 void testApp::update(){
     updateGUI();
     //    if(sense_mode==0)
+    if(bFreeDraw)
+    {
+        addParticle(freeDraw.x , freeDraw.y , 0, 0);
+    }
     {
         if(bEmmit)
         {
@@ -295,7 +329,7 @@ void testApp::update(){
                 float F, mX, mY, A;
               
                 int mouseMass = 50;
-                float distance =  ofDist(p->pos.x,p->pos.y,mouseX,mouseY);
+                float distance =  ofDist(p->pos.x,p->pos.y,freeDraw.x,freeDraw.x);
                 if( distance != 0 ) {
                     F = p->mass * mouseMass;
                     F /= distance ;
@@ -303,8 +337,8 @@ void testApp::update(){
                     if( distance < 30 ) {
                         F = 0.1;
                     }
-                    mX = ( p->mass * p->pos.x + mouseMass * mouseX ) / ( p->mass + mouseMass );
-                    mY = ( p->mass * p->pos.y + mouseMass * mouseY ) / ( p->mass + mouseMass );
+                    mX = ( p->mass * p->pos.x + mouseMass * freeDraw.x ) / ( p->mass + mouseMass );
+                    mY = ( p->mass * p->pos.y + mouseMass * freeDraw.y ) / ( p->mass + mouseMass );
                     A = atan2( mY-p->pos.y, mX-p->pos.x );
                     
                     mX = F * cos(A);
@@ -318,14 +352,8 @@ void testApp::update(){
 
                     p->vel= ofVec2f((p->magnitude * cos(p->angle)), (p->magnitude * sin(p->angle)));
                     p->pos+=p->vel;
-                    if(distance>10)
-                    {
-                        p->magnitude *= 0.95;
-                    }
-                    else
-                    {
-                        p->magnitude *= 0.9;
-                    }
+                    p->magnitude *= 0.9;
+                    
                 }
             }
             else
@@ -536,11 +564,32 @@ void testApp::mouseDragged(int x, int y, int button){
     //    for(int i =0 ; i < 10 ; i++)
     {
         addParticle(x,y,0,0);
+        
     }
+    
+    ofxOscMessage message;
+    
+	ofxOscBundle bundle;
+    
+	ofxOscMessage m;
+	m.setAddress("/freedraw/x");
+    m.addFloatArg(x*1.0f/ofGetWidth());
+	bundle.addMessage(m);
+	m.clear();
+    
+    m.setAddress("/freedraw/y");
+    m.addFloatArg(y*1.0f/ofGetHeight());
+	bundle.addMessage(m);
+	m.clear();
+    
+    
+    sender.sendBundle(bundle);
+
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
+    
     if(sense_mode==0)
     {
         //for(int i =0 ; i < 10 ; i++)
@@ -580,7 +629,6 @@ void testApp::createRipple(string target , int x ,int y)
 }
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
-    
 }
 
 //--------------------------------------------------------------

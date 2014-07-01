@@ -108,6 +108,6 @@ public:
     MText *bang_mtext;
     
     void clearParticle();
-
+    ofxOscSender sender;
     
 };

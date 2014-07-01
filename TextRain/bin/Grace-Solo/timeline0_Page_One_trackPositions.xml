@@ -45,13 +45,13 @@
         <x>0.000000000</x>
         <y>435.000000000</y>
         <width>1300.000000000</width>
-        <height>155.000000000</height>
+        <height>23.000000000</height>
     </element>
     <element name="curves_2">
         <x>0.000000000</x>
-        <y>614.000000000</y>
+        <y>482.000000000</y>
         <width>1300.000000000</width>
-        <height>13.000000000</height>
+        <height>170.000000000</height>
     </element>
     <element name="curves_3">
         <x>0.000000000</x>
@@ -61,9 +61,9 @@
     </element>
     <element name="enable">
         <x>0.000000000</x>
-        <y>651.000000000</y>
+        <y>676.000000000</y>
         <width>1300.000000000</width>
-        <height>46.000000000</height>
+        <height>20.000000000</height>
     </element>
     <element name="flags">
         <x>0.000000000</x>
@@ -91,7 +91,7 @@
     </element>
     <element name="switches_0">
         <x>0.000000000</x>
-        <y>721.000000000</y>
+        <y>720.000000000</y>
         <width>1300.000000000</width>
         <height>40.000000000</height>
     </element>

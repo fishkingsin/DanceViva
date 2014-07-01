@@ -89,14 +89,16 @@ public:
         color.r = 255;
         color.g = 255;
         color.b = 255;
-        tweenIn.setParameters(1,easingcubic,ofxTween::easeOut,0,1,100,0);
+        tweenIn.setParameters(1,easingcubic,ofxTween::easeOut,0,1,100,20);
         if(index!=_i)
         {
+
             tweenOut.setParameters(2,easingcubic,ofxTween::easeOut,1,0,500,100);
             return false;
         }
         else
         {
+            bScale = true;
             tweenOut.setParameters(3,easingcubic,ofxTween::easeOut,1,0,10000,100);
             return true;
         }
