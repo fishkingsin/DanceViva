@@ -23,6 +23,28 @@
 		1A54CF291959B97800A34CA1 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A54CF1D1959B97800A34CA1 /* OscPrintReceivedElements.cpp */; };
 		1A54CF2A1959B97800A34CA1 /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A54CF1F1959B97800A34CA1 /* OscReceivedElements.cpp */; };
 		1A54CF2B1959B97800A34CA1 /* OscTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A54CF211959B97800A34CA1 /* OscTypes.cpp */; };
+		1A6A61681961AA8400F66265 /* ofxOpenSteerPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61271961AA8400F66265 /* ofxOpenSteerPlugin.cpp */; };
+		1A6A61691961AA8400F66265 /* ofxOpenSteerVehicle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A612B1961AA8400F66265 /* ofxOpenSteerVehicle.cpp */; };
+		1A6A616A1961AA8400F66265 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61531961AA8400F66265 /* Camera.cpp */; };
+		1A6A616B1961AA8400F66265 /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61541961AA8400F66265 /* Clock.cpp */; };
+		1A6A616C1961AA8400F66265 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61551961AA8400F66265 /* Color.cpp */; };
+		1A6A616D1961AA8400F66265 /* Draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61561961AA8400F66265 /* Draw.cpp */; };
+		1A6A616E1961AA8400F66265 /* lq.c in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61571961AA8400F66265 /* lq.c */; };
+		1A6A616F1961AA8400F66265 /* Obstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61581961AA8400F66265 /* Obstacle.cpp */; };
+		1A6A61701961AA8400F66265 /* OldPathway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61591961AA8400F66265 /* OldPathway.cpp */; };
+		1A6A61711961AA8400F66265 /* OpenSteerDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A615A1961AA8400F66265 /* OpenSteerDemo.cpp */; };
+		1A6A61721961AA8400F66265 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A615B1961AA8400F66265 /* Path.cpp */; };
+		1A6A61731961AA8400F66265 /* Pathway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A615C1961AA8400F66265 /* Pathway.cpp */; };
+		1A6A61741961AA8400F66265 /* PlugIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A615D1961AA8400F66265 /* PlugIn.cpp */; };
+		1A6A61751961AA8400F66265 /* PolylineSegmentedPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A615E1961AA8400F66265 /* PolylineSegmentedPath.cpp */; };
+		1A6A61761961AA8400F66265 /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A615F1961AA8400F66265 /* PolylineSegmentedPathwaySegmentRadii.cpp */; };
+		1A6A61771961AA8400F66265 /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61601961AA8400F66265 /* PolylineSegmentedPathwaySingleRadius.cpp */; };
+		1A6A61781961AA8400F66265 /* SegmentedPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61611961AA8400F66265 /* SegmentedPath.cpp */; };
+		1A6A61791961AA8400F66265 /* SegmentedPathway.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61621961AA8400F66265 /* SegmentedPathway.cpp */; };
+		1A6A617A1961AA8400F66265 /* SimpleVehicle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61631961AA8400F66265 /* SimpleVehicle.cpp */; };
+		1A6A617B1961AA8400F66265 /* TerrainRayTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61641961AA8400F66265 /* TerrainRayTest.cpp */; };
+		1A6A617C1961AA8400F66265 /* Vec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61661961AA8400F66265 /* Vec3.cpp */; };
+		1A6A617D1961AA8400F66265 /* Vec3Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A61671961AA8400F66265 /* Vec3Utilities.cpp */; };
 		1AA49E04194EF69900812A7E /* ofxFXObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AA49DF7194EF69900812A7E /* ofxFXObject.cpp */; };
 		1AF196721953283C00323657 /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF196611953283C00323657 /* Syphon.framework */; };
 		1AF196731953283C00323657 /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF196641953283C00323657 /* SyphonNameboundClient.m */; };
@@ -167,6 +189,67 @@
 		1A54CF201959B97800A34CA1 /* OscReceivedElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscReceivedElements.h; sourceTree = "<group>"; };
 		1A54CF211959B97800A34CA1 /* OscTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OscTypes.cpp; sourceTree = "<group>"; };
 		1A54CF221959B97800A34CA1 /* OscTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscTypes.h; sourceTree = "<group>"; };
+		1A6A61261961AA8400F66265 /* ofxOpenSteer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteer.h; sourceTree = "<group>"; };
+		1A6A61271961AA8400F66265 /* ofxOpenSteerPlugin.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOpenSteerPlugin.cpp; sourceTree = "<group>"; };
+		1A6A61281961AA8400F66265 /* ofxOpenSteerPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerPlugin.h; sourceTree = "<group>"; };
+		1A6A61291961AA8400F66265 /* ofxOpenSteerTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerTypes.h; sourceTree = "<group>"; };
+		1A6A612A1961AA8400F66265 /* ofxOpenSteerUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerUtils.h; sourceTree = "<group>"; };
+		1A6A612B1961AA8400F66265 /* ofxOpenSteerVehicle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOpenSteerVehicle.cpp; sourceTree = "<group>"; };
+		1A6A612C1961AA8400F66265 /* ofxOpenSteerVehicle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxOpenSteerVehicle.h; sourceTree = "<group>"; };
+		1A6A61311961AA8400F66265 /* AbstractVehicle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractVehicle.h; sourceTree = "<group>"; };
+		1A6A61321961AA8400F66265 /* Annotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
+		1A6A61331961AA8400F66265 /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		1A6A61341961AA8400F66265 /* Clock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Clock.h; sourceTree = "<group>"; };
+		1A6A61351961AA8400F66265 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		1A6A61361961AA8400F66265 /* Draw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Draw.h; sourceTree = "<group>"; };
+		1A6A61371961AA8400F66265 /* LocalSpace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalSpace.h; sourceTree = "<group>"; };
+		1A6A61381961AA8400F66265 /* lq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lq.h; sourceTree = "<group>"; };
+		1A6A61391961AA8400F66265 /* Obstacle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
+		1A6A613A1961AA8400F66265 /* OldPathway.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldPathway.h; sourceTree = "<group>"; };
+		1A6A613B1961AA8400F66265 /* OpenSteerDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenSteerDemo.h; sourceTree = "<group>"; };
+		1A6A613C1961AA8400F66265 /* Path.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
+		1A6A613D1961AA8400F66265 /* Pathway.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pathway.h; sourceTree = "<group>"; };
+		1A6A613E1961AA8400F66265 /* PlugIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlugIn.h; sourceTree = "<group>"; };
+		1A6A613F1961AA8400F66265 /* PolylineSegmentedPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolylineSegmentedPath.h; sourceTree = "<group>"; };
+		1A6A61401961AA8400F66265 /* PolylineSegmentedPathwaySegmentRadii.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolylineSegmentedPathwaySegmentRadii.h; sourceTree = "<group>"; };
+		1A6A61411961AA8400F66265 /* PolylineSegmentedPathwaySingleRadius.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolylineSegmentedPathwaySingleRadius.h; sourceTree = "<group>"; };
+		1A6A61421961AA8400F66265 /* Proximity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Proximity.h; sourceTree = "<group>"; };
+		1A6A61431961AA8400F66265 /* QueryPathAlike.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryPathAlike.h; sourceTree = "<group>"; };
+		1A6A61441961AA8400F66265 /* QueryPathAlikeBaseDataExtractionPolicies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryPathAlikeBaseDataExtractionPolicies.h; sourceTree = "<group>"; };
+		1A6A61451961AA8400F66265 /* QueryPathAlikeMappings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryPathAlikeMappings.h; sourceTree = "<group>"; };
+		1A6A61461961AA8400F66265 /* QueryPathAlikeUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryPathAlikeUtilities.h; sourceTree = "<group>"; };
+		1A6A61471961AA8400F66265 /* SegmentedPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedPath.h; sourceTree = "<group>"; };
+		1A6A61481961AA8400F66265 /* SegmentedPathAlikeUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedPathAlikeUtilities.h; sourceTree = "<group>"; };
+		1A6A61491961AA8400F66265 /* SegmentedPathway.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedPathway.h; sourceTree = "<group>"; };
+		1A6A614A1961AA8400F66265 /* SharedPointer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedPointer.h; sourceTree = "<group>"; };
+		1A6A614B1961AA8400F66265 /* SimpleVehicle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleVehicle.h; sourceTree = "<group>"; };
+		1A6A614C1961AA8400F66265 /* StandardTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StandardTypes.h; sourceTree = "<group>"; };
+		1A6A614D1961AA8400F66265 /* SteerLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SteerLibrary.h; sourceTree = "<group>"; };
+		1A6A614E1961AA8400F66265 /* UnusedParameter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnusedParameter.h; sourceTree = "<group>"; };
+		1A6A614F1961AA8400F66265 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		1A6A61501961AA8400F66265 /* Vec3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vec3.h; sourceTree = "<group>"; };
+		1A6A61511961AA8400F66265 /* Vec3Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vec3Utilities.h; sourceTree = "<group>"; };
+		1A6A61531961AA8400F66265 /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		1A6A61541961AA8400F66265 /* Clock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Clock.cpp; sourceTree = "<group>"; };
+		1A6A61551961AA8400F66265 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
+		1A6A61561961AA8400F66265 /* Draw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Draw.cpp; sourceTree = "<group>"; };
+		1A6A61571961AA8400F66265 /* lq.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lq.c; sourceTree = "<group>"; };
+		1A6A61581961AA8400F66265 /* Obstacle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Obstacle.cpp; sourceTree = "<group>"; };
+		1A6A61591961AA8400F66265 /* OldPathway.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OldPathway.cpp; sourceTree = "<group>"; };
+		1A6A615A1961AA8400F66265 /* OpenSteerDemo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpenSteerDemo.cpp; sourceTree = "<group>"; };
+		1A6A615B1961AA8400F66265 /* Path.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Path.cpp; sourceTree = "<group>"; };
+		1A6A615C1961AA8400F66265 /* Pathway.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pathway.cpp; sourceTree = "<group>"; };
+		1A6A615D1961AA8400F66265 /* PlugIn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlugIn.cpp; sourceTree = "<group>"; };
+		1A6A615E1961AA8400F66265 /* PolylineSegmentedPath.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PolylineSegmentedPath.cpp; sourceTree = "<group>"; };
+		1A6A615F1961AA8400F66265 /* PolylineSegmentedPathwaySegmentRadii.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PolylineSegmentedPathwaySegmentRadii.cpp; sourceTree = "<group>"; };
+		1A6A61601961AA8400F66265 /* PolylineSegmentedPathwaySingleRadius.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PolylineSegmentedPathwaySingleRadius.cpp; sourceTree = "<group>"; };
+		1A6A61611961AA8400F66265 /* SegmentedPath.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SegmentedPath.cpp; sourceTree = "<group>"; };
+		1A6A61621961AA8400F66265 /* SegmentedPathway.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SegmentedPathway.cpp; sourceTree = "<group>"; };
+		1A6A61631961AA8400F66265 /* SimpleVehicle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleVehicle.cpp; sourceTree = "<group>"; };
+		1A6A61641961AA8400F66265 /* TerrainRayTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TerrainRayTest.cpp; sourceTree = "<group>"; };
+		1A6A61651961AA8400F66265 /* TerrainRayTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TerrainRayTest.h; sourceTree = "<group>"; };
+		1A6A61661961AA8400F66265 /* Vec3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vec3.cpp; sourceTree = "<group>"; };
+		1A6A61671961AA8400F66265 /* Vec3Utilities.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vec3Utilities.cpp; sourceTree = "<group>"; };
 		1AA49DDD194EF69900812A7E /* ofxBlend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBlend.h; sourceTree = "<group>"; };
 		1AA49DDE194EF69900812A7E /* ofxClone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxClone.h; sourceTree = "<group>"; };
 		1AA49DDF194EF69900812A7E /* ofxMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMask.h; sourceTree = "<group>"; };
@@ -506,6 +589,124 @@
 			path = osc;
 			sourceTree = "<group>";
 		};
+		1A6A61241961AA8400F66265 /* ofxOpenSteer */ = {
+			isa = PBXGroup;
+			children = (
+				1A6A61251961AA8400F66265 /* src */,
+				1A6A612D1961AA8400F66265 /* libs */,
+			);
+			name = ofxOpenSteer;
+			sourceTree = "<group>";
+		};
+		1A6A61251961AA8400F66265 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1A6A61261961AA8400F66265 /* ofxOpenSteer.h */,
+				1A6A61271961AA8400F66265 /* ofxOpenSteerPlugin.cpp */,
+				1A6A61281961AA8400F66265 /* ofxOpenSteerPlugin.h */,
+				1A6A61291961AA8400F66265 /* ofxOpenSteerTypes.h */,
+				1A6A612A1961AA8400F66265 /* ofxOpenSteerUtils.h */,
+				1A6A612B1961AA8400F66265 /* ofxOpenSteerVehicle.cpp */,
+				1A6A612C1961AA8400F66265 /* ofxOpenSteerVehicle.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxOpenSteer/src;
+			sourceTree = "<group>";
+		};
+		1A6A612D1961AA8400F66265 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				1A6A612E1961AA8400F66265 /* opensteer */,
+			);
+			name = libs;
+			path = ../../../addons/ofxOpenSteer/libs;
+			sourceTree = "<group>";
+		};
+		1A6A612E1961AA8400F66265 /* opensteer */ = {
+			isa = PBXGroup;
+			children = (
+				1A6A612F1961AA8400F66265 /* include */,
+				1A6A61521961AA8400F66265 /* src */,
+			);
+			path = opensteer;
+			sourceTree = "<group>";
+		};
+		1A6A612F1961AA8400F66265 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				1A6A61301961AA8400F66265 /* OpenSteer */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		1A6A61301961AA8400F66265 /* OpenSteer */ = {
+			isa = PBXGroup;
+			children = (
+				1A6A61311961AA8400F66265 /* AbstractVehicle.h */,
+				1A6A61321961AA8400F66265 /* Annotation.h */,
+				1A6A61331961AA8400F66265 /* Camera.h */,
+				1A6A61341961AA8400F66265 /* Clock.h */,
+				1A6A61351961AA8400F66265 /* Color.h */,
+				1A6A61361961AA8400F66265 /* Draw.h */,
+				1A6A61371961AA8400F66265 /* LocalSpace.h */,
+				1A6A61381961AA8400F66265 /* lq.h */,
+				1A6A61391961AA8400F66265 /* Obstacle.h */,
+				1A6A613A1961AA8400F66265 /* OldPathway.h */,
+				1A6A613B1961AA8400F66265 /* OpenSteerDemo.h */,
+				1A6A613C1961AA8400F66265 /* Path.h */,
+				1A6A613D1961AA8400F66265 /* Pathway.h */,
+				1A6A613E1961AA8400F66265 /* PlugIn.h */,
+				1A6A613F1961AA8400F66265 /* PolylineSegmentedPath.h */,
+				1A6A61401961AA8400F66265 /* PolylineSegmentedPathwaySegmentRadii.h */,
+				1A6A61411961AA8400F66265 /* PolylineSegmentedPathwaySingleRadius.h */,
+				1A6A61421961AA8400F66265 /* Proximity.h */,
+				1A6A61431961AA8400F66265 /* QueryPathAlike.h */,
+				1A6A61441961AA8400F66265 /* QueryPathAlikeBaseDataExtractionPolicies.h */,
+				1A6A61451961AA8400F66265 /* QueryPathAlikeMappings.h */,
+				1A6A61461961AA8400F66265 /* QueryPathAlikeUtilities.h */,
+				1A6A61471961AA8400F66265 /* SegmentedPath.h */,
+				1A6A61481961AA8400F66265 /* SegmentedPathAlikeUtilities.h */,
+				1A6A61491961AA8400F66265 /* SegmentedPathway.h */,
+				1A6A614A1961AA8400F66265 /* SharedPointer.h */,
+				1A6A614B1961AA8400F66265 /* SimpleVehicle.h */,
+				1A6A614C1961AA8400F66265 /* StandardTypes.h */,
+				1A6A614D1961AA8400F66265 /* SteerLibrary.h */,
+				1A6A614E1961AA8400F66265 /* UnusedParameter.h */,
+				1A6A614F1961AA8400F66265 /* Utilities.h */,
+				1A6A61501961AA8400F66265 /* Vec3.h */,
+				1A6A61511961AA8400F66265 /* Vec3Utilities.h */,
+			);
+			path = OpenSteer;
+			sourceTree = "<group>";
+		};
+		1A6A61521961AA8400F66265 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1A6A61531961AA8400F66265 /* Camera.cpp */,
+				1A6A61541961AA8400F66265 /* Clock.cpp */,
+				1A6A61551961AA8400F66265 /* Color.cpp */,
+				1A6A61561961AA8400F66265 /* Draw.cpp */,
+				1A6A61571961AA8400F66265 /* lq.c */,
+				1A6A61581961AA8400F66265 /* Obstacle.cpp */,
+				1A6A61591961AA8400F66265 /* OldPathway.cpp */,
+				1A6A615A1961AA8400F66265 /* OpenSteerDemo.cpp */,
+				1A6A615B1961AA8400F66265 /* Path.cpp */,
+				1A6A615C1961AA8400F66265 /* Pathway.cpp */,
+				1A6A615D1961AA8400F66265 /* PlugIn.cpp */,
+				1A6A615E1961AA8400F66265 /* PolylineSegmentedPath.cpp */,
+				1A6A615F1961AA8400F66265 /* PolylineSegmentedPathwaySegmentRadii.cpp */,
+				1A6A61601961AA8400F66265 /* PolylineSegmentedPathwaySingleRadius.cpp */,
+				1A6A61611961AA8400F66265 /* SegmentedPath.cpp */,
+				1A6A61621961AA8400F66265 /* SegmentedPathway.cpp */,
+				1A6A61631961AA8400F66265 /* SimpleVehicle.cpp */,
+				1A6A61641961AA8400F66265 /* TerrainRayTest.cpp */,
+				1A6A61651961AA8400F66265 /* TerrainRayTest.h */,
+				1A6A61661961AA8400F66265 /* Vec3.cpp */,
+				1A6A61671961AA8400F66265 /* Vec3Utilities.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		1AA49DDB194EF69900812A7E /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -812,6 +1013,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				1A6A61241961AA8400F66265 /* ofxOpenSteer */,
 				1A54CECD1959B92000A34CA1 /* ofxOsc */,
 				1A54CE6D1959B77100A34CA1 /* ofxDuration */,
 				1A54CEB51959B77200A34CA1 /* ofxRange */,
@@ -1027,17 +1229,22 @@
 				1A54CF281959B97800A34CA1 /* OscOutboundPacketStream.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
+				1A6A617C1961AA8400F66265 /* Vec3.cpp in Sources */,
 				1A54CF011959B92000A34CA1 /* ofxOscBundle.cpp in Sources */,
 				E4C3876813D701BA0043F0B3 /* ofxXmlSettings.cpp in Sources */,
 				E4C3876913D701BA0043F0B3 /* tinyxml.cpp in Sources */,
 				1A54CF2B1959B97800A34CA1 /* OscTypes.cpp in Sources */,
 				E4C3876A13D701BA0043F0B3 /* tinyxmlerror.cpp in Sources */,
+				1A6A61691961AA8400F66265 /* ofxOpenSteerVehicle.cpp in Sources */,
+				1A6A61761961AA8400F66265 /* PolylineSegmentedPathwaySegmentRadii.cpp in Sources */,
 				E4C3876B13D701BA0043F0B3 /* tinyxmlparser.cpp in Sources */,
 				5179774B14CF9E0100AC92E2 /* ofxEasing.cpp in Sources */,
 				5179774C14CF9E0100AC92E2 /* ofxEasingBack.cpp in Sources */,
 				5179774D14CF9E0100AC92E2 /* ofxEasingBounce.cpp in Sources */,
 				5179774E14CF9E0100AC92E2 /* ofxEasingCirc.cpp in Sources */,
+				1A6A61791961AA8400F66265 /* SegmentedPathway.cpp in Sources */,
 				5179774F14CF9E0100AC92E2 /* ofxEasingCubic.cpp in Sources */,
+				1A6A61721961AA8400F66265 /* Path.cpp in Sources */,
 				5179775014CF9E0100AC92E2 /* ofxEasingElastic.cpp in Sources */,
 				5179775114CF9E0100AC92E2 /* ofxEasingExpo.cpp in Sources */,
 				5179775214CF9E0100AC92E2 /* ofxEasingLinear.cpp in Sources */,
@@ -1050,15 +1257,22 @@
 				1A54CEBB1959B77200A34CA1 /* ofxDuration.cpp in Sources */,
 				1AA49E04194EF69900812A7E /* ofxFXObject.cpp in Sources */,
 				5179775714CF9E0100AC92E2 /* ofxTween.cpp in Sources */,
+				1A6A61771961AA8400F66265 /* PolylineSegmentedPathwaySingleRadius.cpp in Sources */,
 				1A54CF051959B92000A34CA1 /* ofxOscSender.cpp in Sources */,
 				5179776414CF9EE700AC92E2 /* ofxTrueTypeFontUC.cpp in Sources */,
 				5110207514CFB6C900FEF1D6 /* guiBaseObject.cpp in Sources */,
+				1A6A61781961AA8400F66265 /* SegmentedPath.cpp in Sources */,
 				5110207614CFB6C900FEF1D6 /* guiCallback.cpp in Sources */,
 				1A54CF241959B97800A34CA1 /* NetworkingUtils.cpp in Sources */,
+				1A6A616C1961AA8400F66265 /* Color.cpp in Sources */,
 				1AF196761953283C00323657 /* ofxSyphonServerDirectory.mm in Sources */,
+				1A6A616F1961AA8400F66265 /* Obstacle.cpp in Sources */,
 				5110207714CFB6C900FEF1D6 /* guiCallbackValue.cpp in Sources */,
 				5110207814CFB6C900FEF1D6 /* guiColor.cpp in Sources */,
 				5110207914CFB6C900FEF1D6 /* guiTextBase.cpp in Sources */,
+				1A6A617A1961AA8400F66265 /* SimpleVehicle.cpp in Sources */,
+				1A6A617B1961AA8400F66265 /* TerrainRayTest.cpp in Sources */,
+				1A6A61701961AA8400F66265 /* OldPathway.cpp in Sources */,
 				1A54CF021959B92000A34CA1 /* ofxOscMessage.cpp in Sources */,
 				5110207A14CFB6C900FEF1D6 /* guiType2DSlider.cpp in Sources */,
 				5110207B14CFB6C900FEF1D6 /* guiTypeButtonSlider.cpp in Sources */,
@@ -1068,13 +1282,18 @@
 				5110207E14CFB6C900FEF1D6 /* guiTypeDrawable.cpp in Sources */,
 				5110207F14CFB6C900FEF1D6 /* guiTypeFileLister.cpp in Sources */,
 				5110208014CFB6C900FEF1D6 /* guiTypeLabel.cpp in Sources */,
+				1A6A61751961AA8400F66265 /* PolylineSegmentedPath.cpp in Sources */,
 				1A54CF271959B97800A34CA1 /* UdpSocketWin.cpp in Sources */,
 				5110208114CFB6C900FEF1D6 /* guiTypeLogger.cpp in Sources */,
 				1A54CF231959B97800A34CA1 /* IpEndpointName.cpp in Sources */,
 				5110208214CFB6C900FEF1D6 /* guiTypeMultiToggle.cpp in Sources */,
+				1A6A61711961AA8400F66265 /* OpenSteerDemo.cpp in Sources */,
+				1A6A616A1961AA8400F66265 /* Camera.cpp in Sources */,
 				1A42C43019531A860024D67B /* Particle.cpp in Sources */,
 				5110208314CFB6C900FEF1D6 /* guiTypePanel.cpp in Sources */,
+				1A6A61681961AA8400F66265 /* ofxOpenSteerPlugin.cpp in Sources */,
 				5110208414CFB6C900FEF1D6 /* guiTypeSlider.cpp in Sources */,
+				1A6A616D1961AA8400F66265 /* Draw.cpp in Sources */,
 				5110208514CFB6C900FEF1D6 /* guiTypeText.cpp in Sources */,
 				1A54CF031959B92000A34CA1 /* ofxOscParameterSync.cpp in Sources */,
 				5110208614CFB6C900FEF1D6 /* guiTypeTextDropDown.cpp in Sources */,
@@ -1088,10 +1307,15 @@
 				5110208A14CFB6C900FEF1D6 /* guiTypeVideo.cpp in Sources */,
 				5110208B14CFB6C900FEF1D6 /* guiValue.cpp in Sources */,
 				5110208C14CFB6C900FEF1D6 /* ofxControlPanel.cpp in Sources */,
+				1A6A617D1961AA8400F66265 /* Vec3Utilities.cpp in Sources */,
 				5110208D14CFB6C900FEF1D6 /* simpleColor.cpp in Sources */,
+				1A6A61731961AA8400F66265 /* Pathway.cpp in Sources */,
 				5110208E14CFB6C900FEF1D6 /* simpleFileLister.cpp in Sources */,
+				1A6A61741961AA8400F66265 /* PlugIn.cpp in Sources */,
 				1A54CF261959B97800A34CA1 /* NetworkingUtilsWin.cpp in Sources */,
+				1A6A616B1961AA8400F66265 /* Clock.cpp in Sources */,
 				5110208F14CFB6C900FEF1D6 /* simpleLogger.cpp in Sources */,
+				1A6A616E1961AA8400F66265 /* lq.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1298,6 +1522,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = TextRainDebug;
+				USER_HEADER_SEARCH_PATHS = ../../../addons/ofxOpenSteer/libs/opensteer/include/;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1387,6 +1612,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = TextRain;
+				USER_HEADER_SEARCH_PATHS = ../../../addons/ofxOpenSteer/libs/opensteer/include/;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

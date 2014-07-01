@@ -22,10 +22,14 @@
 		<string>https://github.com/patriciogonzalezvivo/ofxFX.git</string>
 		<key>80BBA7C9-BB38-406A-AF19-E013C59C7FF2</key>
 		<string>https://github.com/Flightphase/ofxRange.git</string>
+		<key>87574D88-BF8E-499A-ACB2-A85D0C4602D3</key>
+		<string>https://github.com/underdoeg/ofxOpenSteer.git</string>
 		<key>994328BB-A78D-4578-A6AD-D9C734F2CCE4</key>
 		<string>https://github.com/fishkingsin/DanceViva.git</string>
 		<key>9DA0DB90-06EB-4367-8B09-DB6AE5E5F42E</key>
 		<string>https://github.com/kylemcdonald/ofxControlPanel.git</string>
+		<key>D342EFAE-BF07-48D0-AF01-6DC7F29A5E30</key>
+		<string>https://github.com/fokaccha1/ofxFlocking.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TextRain/TextRain.xcodeproj/project.xcworkspace</string>
@@ -43,10 +47,14 @@
 		<string>../../../../../addons/ofxFX</string>
 		<key>80BBA7C9-BB38-406A-AF19-E013C59C7FF2</key>
 		<string>../../../../../addons/ofxRange</string>
+		<key>87574D88-BF8E-499A-ACB2-A85D0C4602D3</key>
+		<string>../../../../../addons/ofxOpenSteer</string>
 		<key>994328BB-A78D-4578-A6AD-D9C734F2CCE4</key>
 		<string>../../..</string>
 		<key>9DA0DB90-06EB-4367-8B09-DB6AE5E5F42E</key>
 		<string>../../../../../addons/ofxControlPanel</string>
+		<key>D342EFAE-BF07-48D0-AF01-6DC7F29A5E30</key>
+		<string>../../../../../addons/ofxFlocking</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/fishkingsin/DanceViva.git</string>
@@ -84,9 +92,25 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D342EFAE-BF07-48D0-AF01-6DC7F29A5E30</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxFlocking</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>64C519B7-DC28-4B18-9B8A-54F4CF678865</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxFX</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>87574D88-BF8E-499A-ACB2-A85D0C4602D3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxOpenSteer</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

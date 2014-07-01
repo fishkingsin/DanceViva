@@ -20,6 +20,7 @@ public:
     ofColor color;
     int age;
 //    float alpha;
+    
     float damp;
     ofxTrueTypeFontUC *type;
     string theCharacter;

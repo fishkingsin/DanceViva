@@ -1,11 +1,13 @@
 #include "testApp.h"
 #include "Mode2.h"
+#define MAX_AGE 50
 bool bDebug = false;
 float emmitX  = 0;
 float emmitY  = 0;
 bool bEmmit = false;
 float noisePower = 0;
 float noiseStrength = 0;
+bool isGravity = false;
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -245,8 +247,8 @@ void testApp::update(){
         {
             if(charIndex>0)
             {
-    //            float hW = ofGetWidth()*0.5;
-    //            float hH = ofGetHeight()*0.5;
+                //            float hW = ofGetWidth()*0.5;
+                //            float hH = ofGetHeight()*0.5;
                 
                 int r = ofRandom(10,20);
                 for(int i = 0 ; i < r ; i++)
@@ -271,37 +273,55 @@ void testApp::update(){
                         ofSignedNoise(t, p->pos.y/div,p->pos.z/div)*noiseStrength,
                         ofSignedNoise(p->pos.x/div, t, p->pos.z/div)*noiseStrength,
                         ofSignedNoise(p->pos.x/div, t, p->pos.y/div)*noiseStrength);
-            if(p->vel.x>10)
+            if(isGravity)
             {
-                vec *= p->vel*10 ;
-            }
-            else
-            {
-                
-                vec *= 5;
-            }
-            
-            p->oldpos = p->pos;
-            
-            
-            p->pos += p->vel+vec;
-            if(sense_mode == 2 )
-            {
-                float dist = ofDist(p->pos.x,p->pos.y,emmitX,emmitY);
-                p->age = (dist>80)?80:dist;
-                
-                if(dist <10)
+                p->angle += ofSignedNoise(p->pos.x,p->pos.y)*TWO_PI;
+                p->vel.rotate(p->angle, ofVec3f(mouseX,mouseY));
+                if(ofDist(p->pos.x,p->pos.y,mouseX,mouseY)>20)
                 {
-                    particles.erase(it);
-                    --it;
+                    p->vel += (ofVec2f(mouseX,mouseY)-p->pos)*0.01;
+                    
                 }
-//                p->alpha = dist;
-//                if(p->age>0)p->age--;
+
+                p->pos += p->vel+vec;
+                p->vel*=p->damp;
             }
             else
             {
-                p->vel*=p->damp;
-                if(p->age<80)p->age++;
+                
+                if(p->vel.x>10)
+                {
+                    vec *= p->vel*10 ;
+                }
+                else
+                {
+                    
+                    vec *= 5;
+                }
+                
+                
+                p->oldpos = p->pos;
+                
+                
+                p->pos += p->vel+vec;
+                if(sense_mode == 2 )
+                {
+                    float dist = ofDist(p->pos.x,p->pos.y,emmitX,emmitY);
+                    p->age = (dist>MAX_AGE)?MAX_AGE:dist;
+                    
+                    if(dist <10)
+                    {
+                        particles.erase(it);
+                        --it;
+                    }
+                    //                p->alpha = dist;
+                    //                if(p->age>0)p->age--;
+                }
+                else
+                {
+                    p->vel*=p->damp;
+                    if(p->age<MAX_AGE)p->age++;
+                }
             }
             
             
@@ -339,7 +359,6 @@ void testApp::draw(){
         
         Mode2Draw();
     }
-    
     
     ofDisableAlphaBlending();
     //if(ss.size()>selectedText)font.drawString(ss[selectedText], 20, ofGetHeight()-64);
@@ -440,6 +459,9 @@ void testApp::keyPressed(int key){
             break;
         case 'f':
             ofToggleFullscreen();
+            break;
+        case 'g':
+            isGravity = !isGravity;
             break;
     }
 }

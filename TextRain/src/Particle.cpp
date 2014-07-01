@@ -56,5 +56,5 @@ void Particle::draw() {
 //    oldpos = pos;
 //    vel*=damp;
 //    pos += vel+vec;
-//    if(age<80)age++;
+//    if(age<MAX_AGE)age++;
 //}

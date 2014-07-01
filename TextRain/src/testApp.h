@@ -15,6 +15,7 @@
 #include "Particle.h"
 #include "ofxSyphon.h"
 #include "ofxDuration.h"
+
 class MData
 {
 public:
@@ -107,6 +108,6 @@ public:
     MText *bang_mtext;
     
     void clearParticle();
-    
+
     
 };
