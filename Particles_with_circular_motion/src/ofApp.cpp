@@ -5,7 +5,7 @@ float imageScaleX = 0, imageScaleY = 0;
 float emmitX = 0 , emmitY = 0;
 bool isFaceout = false;
 bool isRain = false;
-bool isHead = false;
+
 int numDot = 0;
 int numParticle = 1;
 ofColor particle_color;
@@ -15,7 +15,7 @@ void ofApp::setup(){
     ofEnableSmoothing();
     ofSetLogLevel(OF_LOG_VERBOSE);
     image.loadImage("Finale-silhouette.png");
-    headImage.loadImage("headImage.jpg");
+    
     fboImage.allocate(image.getWidth(),image.getHeight());
 //    player.setLoopState(OF_LOOP_NONE);
 //    player.play();
@@ -86,21 +86,6 @@ void ofApp::trackUpdated(ofxDurationEventArgs& args){
         isRain = args.track->on;
 //        if(isFaceout)toggleNoiseMode(emmitX,emmitY);
     }
-    else if(args.track->name == "/head")
-    {
-        isHead = args.track->on;
-//        while(!particles.empty()) {
-//            particles.erase(particles.begin());
-//        }
-        
-//        fboImage.begin();
-//        ofPushStyle();
-//        ofSetColor(0);
-//        ofRect(0,0,ofGetWidth(),ofGetHeight());
-//        ofPopStyle();
-//        ofPopMatrix();
-//        fboImage.end();
-    }
     
     else if(args.track->name == "/particle_color")
     {
@@ -113,6 +98,30 @@ void ofApp::trackUpdated(ofxDurationEventArgs& args){
         numParticle = (value>1)?value:1;
         
     }
+    else if(args.track->name == "/range_x")
+    {
+        int value = args.track->value;
+        rangeRect.x = (value>1)?value:1;
+        
+    }
+    else if(args.track->name == "/range_y")
+    {
+        int value = args.track->value;
+        rangeRect.y = (value>1)?value:1;
+        
+    }
+    else if(args.track->name == "/range_w")
+    {
+        int value = args.track->value;
+        rangeRect.width = (value>1)?value:1;
+        
+    }
+    else if(args.track->name == "/range_h")
+    {
+        int value = args.track->value;
+        rangeRect.height = (value>1)?value:1;
+        
+    }
     
 }
 
@@ -121,27 +130,18 @@ void ofApp::update(){
     imageScaleX = (image.getWidth()*videoScale);
     imageScaleY = (image.getHeight()*videoScale);
     fboImage.begin();
+    ofClear(0,0,0,1);
     ofPushStyle();
     ofSetColor(255);
-    if(isHead)
+
     {
-        if(ALPHA>0)
-        {
-            ALPHA--;
-        }
-        if(numDot<50)
-        {
-            numDot++;
-        }
-    }else
-    {
-        if(ALPHA<10)
-        {
-            ALPHA++;
-        }
+//        if(ALPHA<10)
+//        {
+//            ALPHA++;
+//        }
         if(isRain)
         {
-            if(ALPHA<255)
+            if(ALPHA<125)
             {
                 ALPHA++;
             }
@@ -154,11 +154,7 @@ void ofApp::update(){
             }
         }
     }
-    if(isHead)
-    {
-        headImage.draw(0,0,ofGetWidth(),ofGetHeight());
-    }
-    else
+    
     {
         image.draw(videoPos.x, videoPos.y, imageScaleX, imageScaleY);
     }
@@ -179,7 +175,7 @@ void ofApp::update(){
     {
 
         float targetX = ofRandom(-10,10);
-        int r = ofRandom(3,5);
+        int r = ofRandom(numParticle,numParticle+5);
         for(int i = 0 ; i < r ; i++)
         {
             createRain(ofRandom(0,ofGetWidth()),-100,targetX,ofGetHeight()-ofRandom(100,200));
@@ -189,7 +185,7 @@ void ofApp::update(){
     //    if(!bAutoBG)
     {
        
-        if(isDraw && !isRain && !isFaceout && !isHead)
+        if(isDraw && !isRain && !isFaceout )
         {
             for (int i=0; i<numParticle; i++) {
 //                createParticle(videoPos.x,videoPos.y,videoPos.x+imageScaleX,videoPos.y+imageScaleY);
@@ -229,17 +225,6 @@ void ofApp::draw(){
     ofRect(0, 0, fbo.getWidth(),fbo.getHeight());
     ofPopStyle();
 
-    
-//    if (ofGetMousePressed()) {
-//        img.draw(0,0);
-//    }
-    if(isHead)
-    {
-        for (int i=0; i<numDot; i++) {
-            createHeadParticle(0,0, ofGetWidth(),ofGetHeight());
-        }
-    }
-    else
     {
         for(it = particles.begin() ; it!=particles.end() ; ++it) {
             Particle &p = *it;
@@ -256,20 +241,27 @@ void ofApp::draw(){
 //    glow.draw();
     
     server.publishTexture(&fbo.getTextureReference());
+    ofPushStyle();
+    
+    ofSetColor(255,255,255,50);
+    fboImage.draw(0,0);
+    ofPopStyle();
+
     
     ofPushStyle();
-//    ofPushStyle();
-//    ofSetColor(255,255,255,50);
-//    fboImage.draw(0,0,fboImage.getWidth(),fboImage.getHeight());
-//    ofPopStyle();
     ofNoFill();
     ofSetColor(255,0,0);
-    
     ofRect(videoPos.x, videoPos.y, imageScaleX, imageScaleY);
     ofRect(emmitX,emmitY,10,10);
     ofPopStyle();
+
+    ofPushStyle();
+    ofNoFill();
+    ofSetColor(0,255,0);
+    ofRect(rangeRect);
+    ofPopStyle();
     
-    while (particles.size()>5000) {
+    while (particles.size()>1000) {
         particles.erase(particles.begin());
     }
 //    player.draw(0,0,100,100);
@@ -364,7 +356,7 @@ void ofApp::createRain(int startX , int startY , int endX ,int endY) {
         p.pos.set(startX,startY);
         p.color = particle_color;
         p.mode = RAIN;
-        p.vel = ofVec2f(0,endY-startY)*ofRandomf()*0.05;
+//        p.vel = ofVec2f(0,0);
         particles.push_back(p);
     }
     //    }
@@ -375,9 +367,7 @@ void ofApp::keyPressed(int key){
     if (key=='s') ofSaveFrame();
     if (key=='q') ofEnableSmoothing();
     if (key=='Q') ofDisableSmoothing();
-    if (key == 'h') {
-        isHead = !isHead;
-    }
+
     if(key == '1')
     {
         toggleNoiseMode(fbo.getWidth()*(emmitX*1.0f/ofGetWidth()),fbo.getHeight()*(emmitY*1.0f/ofGetHeight()));

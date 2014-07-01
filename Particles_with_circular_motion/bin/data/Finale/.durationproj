@@ -85,19 +85,61 @@
             <receiveOSC>0</receiveOSC>
         </track>
         <track>
-            <type>Switches</type>
-            <xmlFileName>switches_1_.xml</xmlFileName>
-            <trackName>switches_1</trackName>
-            <displayName>head</displayName>
+            <type>Curves</type>
+            <xmlFileName>curves_4_.xml</xmlFileName>
+            <trackName>curves_4</trackName>
+            <displayName>numParticle</displayName>
             <sendOSC>1</sendOSC>
-            <receiveOSC>0</receiveOSC>
+            <receiveOSC>1</receiveOSC>
+            <min>0.000000000</min>
+            <max>100.000000000</max>
+        </track>
+        <track>
+            <type>Curves</type>
+            <xmlFileName>curves_5_.xml</xmlFileName>
+            <trackName>curves_5</trackName>
+            <displayName>range_x</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>1</receiveOSC>
+            <min>0.000000000</min>
+            <max>1280.000000000</max>
+        </track>
+        <track>
+            <type>Curves</type>
+            <xmlFileName>curves_6_.xml</xmlFileName>
+            <trackName>curves_6</trackName>
+            <displayName>range_y</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>1</receiveOSC>
+            <min>0.000000000</min>
+            <max>720.000000000</max>
+        </track>
+        <track>
+            <type>Curves</type>
+            <xmlFileName>curves_7_.xml</xmlFileName>
+            <trackName>curves_7</trackName>
+            <displayName>range_w</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>1</receiveOSC>
+            <min>0.000000000</min>
+            <max>1280.000000000</max>
+        </track>
+        <track>
+            <type>Curves</type>
+            <xmlFileName>curves_8_.xml</xmlFileName>
+            <trackName>curves_8</trackName>
+            <displayName>range_h</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>1</receiveOSC>
+            <min>0.000000000</min>
+            <max>720.000000000</max>
         </track>
     </page>
 </tracks>
 <timelineSettings>
     <duration>00:04:34:364</duration>
-    <playhead>00:00:52:762</playhead>
-    <inpoint>00:00:00:000</inpoint>
+    <playhead>00:00:00:000</playhead>
+    <inpoint>00:00:07:808</inpoint>
     <outpoint>00:02:04:691</outpoint>
     <loop>0</loop>
 </timelineSettings>

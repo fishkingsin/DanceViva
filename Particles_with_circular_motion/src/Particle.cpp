@@ -9,11 +9,12 @@
 #include "Particle.h"
 
 void Particle::setup() {
-    vel.x = 2*ofRandomf();
-    vel.y = 2*ofRandomf();
+    vel.x = 1*ofRandomf();
+    vel.y = 1*ofRandomf();
     angle = ofRandomf()*TWO_PI;
     age = 0;
     mode = CIRCULAR;
+    acc = ofVec2f(0,ofRandom(1,2));
     
 }
 
@@ -84,7 +85,7 @@ void Particle::noiseMotion()
                 ofSignedNoise(t, pos.y/div,pos.x/div)*noiseStrength,
                 ofSignedNoise(pos.x/div, t, pos.y/div)*noiseStrength,
                 0);
-    vec *= 10 ;
+    vec *= 5 ;
     oldpos = pos;
     pos += vel+vec;
     age++;
@@ -103,6 +104,7 @@ void Particle::rainMotion()
 //                0);
 //    vec *= 5 ;
     oldpos = pos;
+    vel+=acc;
     pos += vel;//+vec;
     age++;
     

@@ -30,7 +30,7 @@ class ofApp : public ofBaseApp{
     void createHeadParticle(int minX , int minY , int maxX ,int maxY);
     void toggleNoiseMode(float tx, float ty);
 //    ofVideoPlayer player;
-    ofImage image,headImage;
+    ofImage image;
     
     vector<Particle> particles;
     vector<Particle>::iterator it;
