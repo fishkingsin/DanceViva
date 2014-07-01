@@ -54,13 +54,49 @@
             <min>0.000000000</min>
             <max>1.000000000</max>
         </track>
+        <track>
+            <type>Curves</type>
+            <xmlFileName>curves_1_.xml</xmlFileName>
+            <trackName>curves_1</trackName>
+            <displayName>freedraw/x</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>1</receiveOSC>
+            <min>0.000000000</min>
+            <max>1.000000000</max>
+        </track>
+        <track>
+            <type>Curves</type>
+            <xmlFileName>curves_2_.xml</xmlFileName>
+            <trackName>curves_2</trackName>
+            <displayName>freedraw/y</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>1</receiveOSC>
+            <min>0.000000000</min>
+            <max>1.000000000</max>
+        </track>
+        <track>
+            <type>Switches</type>
+            <xmlFileName>enable_.xml</xmlFileName>
+            <trackName>enable</trackName>
+            <displayName>enable</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>0</receiveOSC>
+        </track>
+        <track>
+            <type>Switches</type>
+            <xmlFileName>switches_0_.xml</xmlFileName>
+            <trackName>switches_0</trackName>
+            <displayName>gravity</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>0</receiveOSC>
+        </track>
     </page>
 </tracks>
 <timelineSettings>
     <duration>00:04:34:364</duration>
-    <playhead>00:00:00:000</playhead>
+    <playhead>00:01:20:433</playhead>
     <inpoint>00:00:00:000</inpoint>
-    <outpoint>00:04:34:364</outpoint>
+    <outpoint>00:01:37:293</outpoint>
     <loop>0</loop>
 </timelineSettings>
 <projectSettings>
@@ -68,7 +104,7 @@
     <bpm>120.000000000</bpm>
     <snapToBPM>1</snapToBPM>
     <snapToKeys>1</snapToKeys>
-    <oscInEnabled>1</oscInEnabled>
+    <oscInEnabled>0</oscInEnabled>
     <oscOutEnabled>1</oscOutEnabled>
     <oscInPort>12346</oscInPort>
     <oscIP>localhost</oscIP>

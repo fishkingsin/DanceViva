@@ -1,4 +1,16 @@
 <positions>
+    <element name="/freedraw/enabl">
+        <x>0.000000000</x>
+        <y>606.000000000</y>
+        <width>1300.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="/freedraw/enabl_0">
+        <x>0.000000000</x>
+        <y>606.000000000</y>
+        <width>1300.000000000</width>
+        <height>40.000000000</height>
+    </element>
     <element name="audio">
         <x>0.000000000</x>
         <y>142.000000000</y>
@@ -7,7 +19,7 @@
     </element>
     <element name="bangs">
         <x>0.000000000</x>
-        <y>504.000000000</y>
+        <y>670.000000000</y>
         <width>1300.000000000</width>
         <height>163.000000000</height>
     </element>
@@ -19,27 +31,27 @@
     </element>
     <element name="curves">
         <x>0.000000000</x>
-        <y>360.000000000</y>
+        <y>326.000000000</y>
         <width>1300.000000000</width>
         <height>32.000000000</height>
     </element>
     <element name="curves_0">
         <x>0.000000000</x>
-        <y>416.000000000</y>
+        <y>382.000000000</y>
         <width>1300.000000000</width>
         <height>29.000000000</height>
     </element>
     <element name="curves_1">
         <x>0.000000000</x>
-        <y>328.000000000</y>
+        <y>435.000000000</y>
         <width>1300.000000000</width>
-        <height>40.000000000</height>
+        <height>155.000000000</height>
     </element>
     <element name="curves_2">
         <x>0.000000000</x>
-        <y>655.000000000</y>
+        <y>614.000000000</y>
         <width>1300.000000000</width>
-        <height>40.000000000</height>
+        <height>13.000000000</height>
     </element>
     <element name="curves_3">
         <x>0.000000000</x>
@@ -47,17 +59,23 @@
         <width>1300.000000000</width>
         <height>40.000000000</height>
     </element>
+    <element name="enable">
+        <x>0.000000000</x>
+        <y>651.000000000</y>
+        <width>1300.000000000</width>
+        <height>46.000000000</height>
+    </element>
     <element name="flags">
         <x>0.000000000</x>
         <y>189.000000000</y>
         <width>1300.000000000</width>
-        <height>39.000000000</height>
+        <height>25.000000000</height>
     </element>
     <element name="flags_0">
         <x>0.000000000</x>
-        <y>252.000000000</y>
+        <y>238.000000000</y>
         <width>1300.000000000</width>
-        <height>29.000000000</height>
+        <height>23.000000000</height>
     </element>
     <element name="lfo">
         <x>0.000000000</x>
@@ -67,13 +85,13 @@
     </element>
     <element name="switches">
         <x>0.000000000</x>
-        <y>305.000000000</y>
+        <y>285.000000000</y>
         <width>1300.000000000</width>
-        <height>31.000000000</height>
+        <height>17.000000000</height>
     </element>
     <element name="switches_0">
         <x>0.000000000</x>
-        <y>527.000000000</y>
+        <y>721.000000000</y>
         <width>1300.000000000</width>
         <height>40.000000000</height>
     </element>
