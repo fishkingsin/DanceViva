@@ -13,7 +13,7 @@
     </element>
     <element name="colors">
         <x>0.000000000</x>
-        <y>829.000000000</y>
+        <y>494.000000000</y>
         <width>1300.000000000</width>
         <height>28.000000000</height>
     </element>
@@ -21,35 +21,35 @@
         <x>0.000000000</x>
         <y>142.000000000</y>
         <width>1300.000000000</width>
-        <height>172.000000000</height>
+        <height>25.000000000</height>
     </element>
     <element name="curves_0">
         <x>0.000000000</x>
-        <y>338.000000000</y>
+        <y>191.000000000</y>
         <width>1300.000000000</width>
         <height>37.000000000</height>
     </element>
     <element name="curves_1">
         <x>0.000000000</x>
-        <y>399.000000000</y>
+        <y>252.000000000</y>
         <width>1300.000000000</width>
         <height>33.000000000</height>
     </element>
     <element name="curves_2">
         <x>0.000000000</x>
-        <y>496.000000000</y>
+        <y>349.000000000</y>
         <width>1300.000000000</width>
-        <height>105.000000000</height>
+        <height>27.000000000</height>
     </element>
     <element name="curves_3">
         <x>0.000000000</x>
-        <y>625.000000000</y>
+        <y>400.000000000</y>
         <width>1300.000000000</width>
-        <height>138.000000000</height>
+        <height>28.000000000</height>
     </element>
     <element name="flags">
         <x>0.000000000</x>
-        <y>456.000000000</y>
+        <y>309.000000000</y>
         <width>1300.000000000</width>
         <height>16.000000000</height>
     </element>
@@ -67,19 +67,19 @@
     </element>
     <element name="switches">
         <x>0.000000000</x>
-        <y>787.000000000</y>
+        <y>452.000000000</y>
         <width>1300.000000000</width>
         <height>18.000000000</height>
     </element>
     <element name="switches_0">
         <x>0.000000000</x>
-        <y>881.000000000</y>
+        <y>546.000000000</y>
         <width>1300.000000000</width>
         <height>30.000000000</height>
     </element>
     <element name="switches_1">
         <x>0.000000000</x>
-        <y>935.000000000</y>
+        <y>600.000000000</y>
         <width>1300.000000000</width>
         <height>40.000000000</height>
     </element>

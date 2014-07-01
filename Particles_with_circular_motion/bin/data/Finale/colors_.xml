@@ -96,75 +96,231 @@
         <value>0.723404288</value>
     </key>
     <key>
-        <sampleX>0.075004876</sampleX>
-        <sampleY>0.969999909</sampleY>
-        <time>00:00:57:731</time>
-        <value>0.744680882</value>
+        <sampleX>0.740009069</sampleX>
+        <sampleY>0.504999936</sampleY>
+        <time>00:00:48:350</time>
+        <value>0.424771965</value>
+    </key>
+    <key>
+        <sampleX>0.665001631</sampleX>
+        <sampleY>0.314999968</sampleY>
+        <time>00:00:48:778</time>
+        <value>0.488601685</value>
+    </key>
+    <key>
+        <sampleX>0.330001950</sampleX>
+        <sampleY>0.254999965</sampleY>
+        <time>00:00:49:282</time>
+        <value>0.318389893</value>
+    </key>
+    <key>
+        <sampleX>0.335008502</sampleX>
+        <sampleY>0.719999969</sampleY>
+        <time>00:00:49:662</time>
+        <value>0.488601685</value>
+    </key>
+    <key>
+        <sampleX>0.365000129</sampleX>
+        <sampleY>0.274999976</sampleY>
+        <time>00:00:50:112</time>
+        <value>0.637538373</value>
+    </key>
+    <key>
+        <sampleX>0.790021539</sampleX>
+        <sampleY>0.529999912</sampleY>
+        <time>00:00:50:466</time>
+        <value>0.743920445</value>
+    </key>
+    <key>
+        <sampleX>0.340013087</sampleX>
+        <sampleY>0.309999973</sampleY>
+        <time>00:00:50:806</time>
+        <value>0.573708653</value>
+    </key>
+    <key>
+        <sampleX>0.360049874</sampleX>
+        <sampleY>0.739999950</sampleY>
+        <time>00:00:51:114</time>
+        <value>0.446048200</value>
+    </key>
+    <key>
+        <sampleX>0.640012145</sampleX>
+        <sampleY>0.734999955</sampleY>
+        <time>00:00:51:442</time>
+        <value>0.680090785</value>
+    </key>
+    <key>
+        <sampleX>0.740177870</sampleX>
+        <sampleY>0.499999940</sampleY>
+        <time>00:00:51:879</time>
+        <value>0.488601685</value>
+    </key>
+    <key>
+        <sampleX>0.320010036</sampleX>
+        <sampleY>0.644999921</sampleY>
+        <time>00:00:52:287</time>
+        <value>0.616261065</value>
+    </key>
+    <key>
+        <sampleX>0.500000000</sampleX>
+        <sampleY>0.500000000</sampleY>
+        <time>00:00:52:762</time>
+        <value>0.638297915</value>
+    </key>
+    <key>
+        <sampleX>0.335008502</sampleX>
+        <sampleY>0.744999945</sampleY>
+        <time>00:00:53:133</time>
+        <value>0.510638297</value>
+    </key>
+    <key>
+        <sampleX>0.330017209</sampleX>
+        <sampleY>0.244999975</sampleY>
+        <time>00:00:53:979</time>
+        <value>0.404255331</value>
+    </key>
+    <key>
+        <sampleX>0.305150688</sampleX>
+        <sampleY>0.689999938</sampleY>
+        <time>00:00:54:522</time>
+        <value>0.659574509</value>
+    </key>
+    <key>
+        <sampleX>0.630008757</sampleX>
+        <sampleY>0.754999876</sampleY>
+        <time>00:00:54:948</time>
+        <value>0.468085110</value>
     </key>
     <key>
         <sampleX>0.740009069</sampleX>
         <sampleY>0.504999936</sampleY>
-        <time>00:01:08:822</time>
+        <time>00:00:55:315</time>
         <value>0.531914890</value>
     </key>
     <key>
         <sampleX>0.665001631</sampleX>
         <sampleY>0.314999968</sampleY>
-        <time>00:01:09:250</time>
+        <time>00:00:55:743</time>
         <value>0.595744669</value>
     </key>
     <key>
         <sampleX>0.330001950</sampleX>
         <sampleY>0.254999965</sampleY>
-        <time>00:01:09:754</time>
+        <time>00:00:56:247</time>
         <value>0.425531924</value>
     </key>
     <key>
         <sampleX>0.335008502</sampleX>
         <sampleY>0.719999969</sampleY>
-        <time>00:01:10:134</time>
+        <time>00:00:56:627</time>
         <value>0.595744669</value>
     </key>
     <key>
         <sampleX>0.365000129</sampleX>
         <sampleY>0.274999976</sampleY>
-        <time>00:01:10:584</time>
+        <time>00:00:57:077</time>
         <value>0.744680882</value>
     </key>
     <key>
         <sampleX>0.790021539</sampleX>
         <sampleY>0.529999912</sampleY>
-        <time>00:01:10:938</time>
+        <time>00:00:57:431</time>
         <value>0.851063848</value>
     </key>
     <key>
         <sampleX>0.340013087</sampleX>
         <sampleY>0.309999973</sampleY>
-        <time>00:01:11:278</time>
+        <time>00:00:57:771</time>
         <value>0.680851102</value>
     </key>
     <key>
         <sampleX>0.360049874</sampleX>
         <sampleY>0.739999950</sampleY>
-        <time>00:01:11:586</time>
+        <time>00:00:58:079</time>
         <value>0.553191483</value>
     </key>
     <key>
         <sampleX>0.640012145</sampleX>
         <sampleY>0.734999955</sampleY>
-        <time>00:01:11:914</time>
+        <time>00:00:58:407</time>
         <value>0.787234068</value>
     </key>
     <key>
         <sampleX>0.740177870</sampleX>
         <sampleY>0.499999940</sampleY>
-        <time>00:01:12:351</time>
+        <time>00:00:58:844</time>
         <value>0.595744669</value>
     </key>
     <key>
         <sampleX>0.320010036</sampleX>
         <sampleY>0.644999921</sampleY>
-        <time>00:01:12:759</time>
+        <time>00:00:59:252</time>
         <value>0.723404288</value>
+    </key>
+    <key>
+        <sampleX>0.740009069</sampleX>
+        <sampleY>0.504999936</sampleY>
+        <time>00:00:59:958</time>
+        <value>0.424771965</value>
+    </key>
+    <key>
+        <sampleX>0.665001631</sampleX>
+        <sampleY>0.314999968</sampleY>
+        <time>00:01:00:386</time>
+        <value>0.488601685</value>
+    </key>
+    <key>
+        <sampleX>0.330001950</sampleX>
+        <sampleY>0.254999965</sampleY>
+        <time>00:01:00:890</time>
+        <value>0.318389893</value>
+    </key>
+    <key>
+        <sampleX>0.335008502</sampleX>
+        <sampleY>0.719999969</sampleY>
+        <time>00:01:01:270</time>
+        <value>0.488601685</value>
+    </key>
+    <key>
+        <sampleX>0.365000129</sampleX>
+        <sampleY>0.274999976</sampleY>
+        <time>00:01:01:720</time>
+        <value>0.637538373</value>
+    </key>
+    <key>
+        <sampleX>0.790021539</sampleX>
+        <sampleY>0.529999912</sampleY>
+        <time>00:01:02:074</time>
+        <value>0.743920445</value>
+    </key>
+    <key>
+        <sampleX>0.340013087</sampleX>
+        <sampleY>0.309999973</sampleY>
+        <time>00:01:02:414</time>
+        <value>0.573708653</value>
+    </key>
+    <key>
+        <sampleX>0.360049874</sampleX>
+        <sampleY>0.739999950</sampleY>
+        <time>00:01:02:722</time>
+        <value>0.446048200</value>
+    </key>
+    <key>
+        <sampleX>0.640012145</sampleX>
+        <sampleY>0.734999955</sampleY>
+        <time>00:01:03:050</time>
+        <value>0.680090785</value>
+    </key>
+    <key>
+        <sampleX>0.740177870</sampleX>
+        <sampleY>0.499999940</sampleY>
+        <time>00:01:03:487</time>
+        <value>0.488601685</value>
+    </key>
+    <key>
+        <sampleX>0.320010036</sampleX>
+        <sampleY>0.644999921</sampleY>
+        <time>00:01:03:895</time>
+        <value>0.616261065</value>
     </key>
 </keyframes>

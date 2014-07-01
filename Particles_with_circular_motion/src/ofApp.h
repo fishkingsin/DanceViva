@@ -24,6 +24,7 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     void createParticle();
     void createParticle(int minX , int minY , int maxX ,int maxY);
+    void createParticle(ofRectangle rect);
     void createFadeoutParticle(int minX , int minY , int maxX ,int maxY);
     void createRain(int startX , int startY , int endX ,int endY);
     void createHeadParticle(int minX , int minY , int maxX ,int maxY);
@@ -44,6 +45,7 @@ class ofApp : public ofBaseApp{
     
 	void trackUpdated(ofxDurationEventArgs& args);
     ofPoint videoPos;
+    ofRectangle rangeRect;
     float videoScale;
 
 };

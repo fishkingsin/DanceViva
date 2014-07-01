@@ -7,6 +7,7 @@ bool isFaceout = false;
 bool isRain = false;
 bool isHead = false;
 int numDot = 0;
+int numParticle = 1;
 ofColor particle_color;
 ofPixels pixel;
 //--------------------------------------------------------------
@@ -106,6 +107,13 @@ void ofApp::trackUpdated(ofxDurationEventArgs& args){
         particle_color = args.track->color;
         
     }
+    else if(args.track->name == "/numParticle")
+    {
+        int value = args.track->value;
+        numParticle = (value>1)?value:1;
+        
+    }
+    
 }
 
 //--------------------------------------------------------------
@@ -183,8 +191,9 @@ void ofApp::update(){
        
         if(isDraw && !isRain && !isFaceout && !isHead)
         {
-            for (int i=0; i<100; i++) {
-                createParticle(videoPos.x,videoPos.y,videoPos.x+imageScaleX,videoPos.y+imageScaleY);
+            for (int i=0; i<numParticle; i++) {
+//                createParticle(videoPos.x,videoPos.y,videoPos.x+imageScaleX,videoPos.y+imageScaleY);
+                createParticle(rangeRect);
             }
         }
         
@@ -265,6 +274,9 @@ void ofApp::draw(){
     }
 //    player.draw(0,0,100,100);
 
+}
+void ofApp::createParticle(ofRectangle rect) {
+    createParticle(rect.x , rect.y , rect.x+rect.width  ,rect.y+rect.height);
 }
 void ofApp::createParticle(int minX , int minY , int maxX ,int maxY) {
 
