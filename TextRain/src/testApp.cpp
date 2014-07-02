@@ -9,6 +9,7 @@ float noisePower = 0;
 float noiseStrength = 0;
 bool isGravity = false;
 bool bFreeDraw = false;
+int numParticle = 0;
 ofVec2f freeDraw;
 float findAngle( float x, float y ) {
     float theta;
@@ -223,6 +224,10 @@ void testApp::trackUpdated(ofxDurationEventArgs& args){
     {
         freeDraw.y = args.track->value*ofGetHeight();
     }
+    else if(args.track->name=="/numParticle")
+    {
+        numParticle = args.track->value;
+    }
 
 }
 
@@ -304,7 +309,7 @@ void testApp::update(){
                 //            float hW = ofGetWidth()*0.5;
                 //            float hH = ofGetHeight()*0.5;
                 
-                int r = ofRandom(10,20);
+                int r = numParticle;
                 for(int i = 0 ; i < r ; i++)
                 {
                     if(charIndex<0)
@@ -381,9 +386,9 @@ void testApp::update(){
                 if(sense_mode == 2 )
                 {
                     float dist = ofDist(p->pos.x,p->pos.y,emmitX,emmitY);
-                    p->age = (dist>MAX_AGE)?MAX_AGE:dist;
+                    p->age = ofMap(dist,0,50,0,MAX_AGE);
                     
-                    if(dist <10)
+                    if(p->age < 1)
                     {
                         particles.erase(it);
                         --it;

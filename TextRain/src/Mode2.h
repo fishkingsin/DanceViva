@@ -179,7 +179,7 @@ void testApp::Mode2Update()
                 {
                     
                     Particle * p = *it;
-                    if(ABS(_d->deltaR-ofDist(p->pos.x,p->pos.y,_d->deltaX,_d->deltaY))<10)
+                    if(ABS(_d->deltaR-ofDist(p->pos.x,p->pos.y,_d->deltaX,_d->deltaY))<30)
                     {
                         p->age=0;
                     }

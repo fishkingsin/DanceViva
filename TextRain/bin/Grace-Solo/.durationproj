@@ -90,11 +90,21 @@
             <sendOSC>1</sendOSC>
             <receiveOSC>0</receiveOSC>
         </track>
+        <track>
+            <type>Curves</type>
+            <xmlFileName>curves_3_.xml</xmlFileName>
+            <trackName>curves_3</trackName>
+            <displayName>numParticle</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>1</receiveOSC>
+            <min>0.000000000</min>
+            <max>10.000000000</max>
+        </track>
     </page>
 </tracks>
 <timelineSettings>
     <duration>00:04:34:364</duration>
-    <playhead>00:02:15:376</playhead>
+    <playhead>00:01:57:557</playhead>
     <inpoint>00:00:00:000</inpoint>
     <outpoint>00:04:34:364</outpoint>
     <loop>0</loop>
