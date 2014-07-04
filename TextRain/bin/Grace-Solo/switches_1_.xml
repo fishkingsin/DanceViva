@@ -1,1 +1,12 @@
-<keyframes />
+<keyframes>
+    <key>
+        <max>00:01:58:820</max>
+        <time>00:01:45:735</time>
+        <value>0.449999988</value>
+    </key>
+    <key>
+        <max>00:02:27:523</max>
+        <time>00:02:13:383</time>
+        <value>0.475000024</value>
+    </key>
+</keyframes>

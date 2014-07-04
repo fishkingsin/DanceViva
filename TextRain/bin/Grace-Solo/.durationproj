@@ -8,7 +8,7 @@
             <displayName>audio</displayName>
             <sendOSC>1</sendOSC>
             <receiveOSC>0</receiveOSC>
-            <clip></clip>
+            <clip>/Users/james/Development/of_v0.8.1_osx_release/apps/DanceViva/TextRain/bin/data/How_To_Be_Alone.aif</clip>
         </track>
         <track>
             <type>Flags</type>
@@ -120,7 +120,7 @@
 </tracks>
 <timelineSettings>
     <duration>00:04:34:364</duration>
-    <playhead>00:01:57:557</playhead>
+    <playhead>00:00:00:000</playhead>
     <inpoint>00:00:00:000</inpoint>
     <outpoint>00:04:34:364</outpoint>
     <loop>0</loop>
