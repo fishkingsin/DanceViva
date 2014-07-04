@@ -8,7 +8,7 @@
             <displayName>audio</displayName>
             <sendOSC>1</sendOSC>
             <receiveOSC>0</receiveOSC>
-            <clip>/Users/james/Development/of_v0.8.1_osx_release/apps/DanceViva/TextRain/bin/data/How_To_Be_Alone.aif</clip>
+            <clip></clip>
         </track>
         <track>
             <type>Flags</type>
@@ -99,6 +99,22 @@
             <receiveOSC>1</receiveOSC>
             <min>0.000000000</min>
             <max>10.000000000</max>
+        </track>
+        <track>
+            <type>Switches</type>
+            <xmlFileName>switches_1_.xml</xmlFileName>
+            <trackName>switches_1</trackName>
+            <displayName>repel</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>0</receiveOSC>
+        </track>
+        <track>
+            <type>Switches</type>
+            <xmlFileName>switches_2_.xml</xmlFileName>
+            <trackName>switches_2</trackName>
+            <displayName>wind</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>0</receiveOSC>
         </track>
     </page>
 </tracks>
