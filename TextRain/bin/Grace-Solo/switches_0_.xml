@@ -9,4 +9,29 @@
         <time>00:01:58:820</time>
         <value>0.050000012</value>
     </key>
+    <key>
+        <max>00:03:28:938</max>
+        <time>00:03:26:309</time>
+        <value>0.449999988</value>
+    </key>
+    <key>
+        <max>00:03:35:191</max>
+        <time>00:03:31:957</time>
+        <value>0.349999785</value>
+    </key>
+    <key>
+        <max>00:03:40:950</max>
+        <time>00:03:37:864</time>
+        <value>0.293395996</value>
+    </key>
+    <key>
+        <max>00:03:46:961</max>
+        <time>00:03:44:155</time>
+        <value>0.509433985</value>
+    </key>
+    <key>
+        <max>00:03:52:057</max>
+        <time>00:03:49:453</time>
+        <value>0.471698105</value>
+    </key>
 </keyframes>

@@ -1,12 +1,42 @@
 <keyframes>
     <key>
-        <max>00:01:53:544</max>
-        <time>00:01:40:459</time>
+        <max>00:01:43:838</max>
+        <time>00:01:36:660</time>
         <value>0.324999988</value>
     </key>
     <key>
-        <max>00:02:31:533</max>
-        <time>00:02:17:393</time>
+        <max>00:02:28:724</max>
+        <time>00:02:21:825</time>
         <value>0.475000024</value>
+    </key>
+    <key>
+        <max>00:03:26:309</max>
+        <time>00:03:23:474</time>
+        <value>0.300000012</value>
+    </key>
+    <key>
+        <max>00:03:31:957</max>
+        <time>00:03:29:028</time>
+        <value>0.574999988</value>
+    </key>
+    <key>
+        <max>00:03:37:864</max>
+        <time>00:03:35:191</time>
+        <value>0.274999976</value>
+    </key>
+    <key>
+        <max>00:03:44:155</max>
+        <time>00:03:40:950</time>
+        <value>0.375000000</value>
+    </key>
+    <key>
+        <max>00:03:49:453</max>
+        <time>00:03:46:961</time>
+        <value>0.550000012</value>
+    </key>
+    <key>
+        <max>00:03:54:660</max>
+        <time>00:03:52:057</time>
+        <value>0.399999976</value>
     </key>
 </keyframes>

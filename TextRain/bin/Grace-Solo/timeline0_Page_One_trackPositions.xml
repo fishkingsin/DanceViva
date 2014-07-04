@@ -55,7 +55,7 @@
     </element>
     <element name="curves_3">
         <x>0.000000000</x>
-        <y>536.000000000</y>
+        <y>569.000000000</y>
         <width>1300.000000000</width>
         <height>24.000000000</height>
     </element>
@@ -93,17 +93,17 @@
         <x>0.000000000</x>
         <y>492.000000000</y>
         <width>1300.000000000</width>
-        <height>20.000000000</height>
+        <height>53.000000000</height>
     </element>
     <element name="switches_1">
         <x>0.000000000</x>
-        <y>584.000000000</y>
+        <y>617.000000000</y>
         <width>1300.000000000</width>
         <height>40.000000000</height>
     </element>
     <element name="switches_2">
         <x>0.000000000</x>
-        <y>648.000000000</y>
+        <y>681.000000000</y>
         <width>1300.000000000</width>
         <height>40.000000000</height>
     </element>
