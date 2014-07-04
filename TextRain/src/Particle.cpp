@@ -17,6 +17,7 @@ void Particle:: setup(ofxTrueTypeFontUC *_type , string _theCharacter) {
     type = _type;
     theCharacter = _theCharacter;
     damp = 0.98;
+    acc.set(ofRandom(0,1),0,0);
 }
 
 void Particle::draw() {

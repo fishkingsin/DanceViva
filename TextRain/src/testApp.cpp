@@ -7,9 +7,10 @@ float emmitY  = 0;
 bool bEmmit = false;
 float noisePower = 0;
 float noiseStrength = 0;
-bool isGravity = false;
+bool isGravity = false,isRepel = false , isWind = false;
 bool bFreeDraw = false;
-int numParticle = 0;
+
+int numParticle = 1;
 ofVec2f freeDraw;
 float findAngle( float x, float y ) {
     float theta;
@@ -202,6 +203,10 @@ void testApp::trackUpdated(ofxDurationEventArgs& args){
     {
         bFreeDraw = args.track->on;
     }
+    else if(args.track->name=="/repel")
+    {
+        isRepel = args.track->on;
+    }
     else if(args.track->name=="/gravity")
     {
         isGravity = args.track->on;
@@ -228,7 +233,10 @@ void testApp::trackUpdated(ofxDurationEventArgs& args){
     {
         numParticle = args.track->value;
     }
-
+    else if(args.track->name=="/wind")
+    {
+        isWind = args.track->on;
+    }
 }
 
 //this captures all our control panel events - unless its setup differently in testApp::setup
@@ -361,6 +369,40 @@ void testApp::update(){
                     
                 }
             }
+            else if(isRepel)
+            {
+                 float F, mX, mY, A;
+                int mouseMass = 50;
+                float distance =  ofDist(p->pos.x,p->pos.y,freeDraw.x,freeDraw.x);
+                if( distance != 0 ) {
+                    F = p->mass * mouseMass;
+                    F /= distance;
+                    if( distance < 10 ) {
+                        F = 0.1;
+                    }
+                    mX = ( p->mass * p->pos.x + mouseMass * freeDraw.x ) / ( p->mass + mouseMass );
+                    mY = ( p->mass * p->pos.y + mouseMass * freeDraw.y ) / ( p->mass + mouseMass );
+                    A = atan2( p->pos.y-mY, p->pos.x-mX );
+                    
+                    mX = F * cos(A);
+                    mY = F * sin(A);
+                    
+                    mX += p->magnitude * cos(p->angle);
+                    mY += p->magnitude * sin(p->angle);
+                    
+                    p->magnitude = sqrt( pow(mX,2) + pow(mY,2) );
+                    p->angle = findAngle( mX, mY );
+                    p->vel = ofVec2f((p->magnitude * cos(p->angle)), (p->magnitude * sin(p->angle)));
+                    p->pos+=p->vel;
+                    p->magnitude *= 0.9;
+                }
+            }
+            else if(isWind)
+            {
+                p->vel += p->acc*p->mass;
+                p->pos += p->vel;
+                p->vel*=p->damp;
+            }
             else
             {
                 ofVec3f vec(
@@ -386,9 +428,14 @@ void testApp::update(){
                 if(sense_mode == 2 )
                 {
                     float dist = ofDist(p->pos.x,p->pos.y,emmitX,emmitY);
-                    p->age = ofMap(dist,0,50,0,MAX_AGE);
+                    if(dist<50)
+                    {
+                        p->vel*=0.8;
+                        p->age = ofMap(dist,10,50,0,MAX_AGE);
+                    }
                     
-                    if(p->age < 1)
+                    p->vel*=p->damp;
+                    if(p->age < 10)
                     {
                         particles.erase(it);
                         --it;
@@ -403,6 +450,26 @@ void testApp::update(){
                 }
             }
             
+            if(p->pos.x < -50 )
+            {
+                p->pos.x = ofGetWidth()+10;
+                p->pos.y = ofRandom(0,ofGetHeight());
+            }
+            else if(p->pos.x > ofGetWidth()+50 )
+            {
+                p->pos.x = -10;
+                p->pos.y = ofRandom(0,ofGetHeight());
+            }
+            if(p->pos.y < -50 )
+            {
+                p->pos.x = ofRandom(0,ofGetWidth());
+                p->pos.y = ofGetHeight()+10;
+            }
+            else if(p->pos.y > ofGetHeight()+50 )
+            {
+                p->pos.x = ofRandom(0,ofGetWidth());
+                p->pos.y = -10;
+            }
             
         }
     }
@@ -541,6 +608,14 @@ void testApp::keyPressed(int key){
             break;
         case 'g':
             isGravity = !isGravity;
+            isRepel = !isGravity;
+            break;
+        case 'G':
+            isRepel = !isRepel;
+            isGravity = isRepel;
+            break;
+        case 'w':
+            isWind = !isWind;
             break;
     }
 }
@@ -608,7 +683,11 @@ void testApp::mousePressed(int x, int y, int button){
     {
         nextText();
         //        ofLogVerbose("targetString:") << targetStrings[selectedText];
-        createRipple( targetString ,x,y);
+        createRipple( "" ,x,y);
+    }
+    if(isGravity)
+    {
+        freeDraw.set(x,y);
     }
 }
 
